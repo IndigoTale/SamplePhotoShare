@@ -4,4 +4,4 @@ ADD requirements.txt $project_dir
 ADD app $project_dir
 WORKDIR $project_dir
 RUN pip install -r requirements.txt
-RUN python3 app/app.py
+RUN apt update
