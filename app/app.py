@@ -1,30 +1,40 @@
-from flask import Flask,render_template,request,url_for,redirect,session                           
+from flask import Flask, render_template, request, url_for, redirect, session
 import json
+import lib
+app = Flask(__name__)
 
-app = Flask(__name__)   
 
-@app.route('/')                                   
-def index():                                
-    return render_template("index.html")                       
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+
 @app.route('/add_user')
 def add_user():
-    return "Hello World!"  
-@app.route('/login',methods=["GET","POST"])
+    return "Hello World!"
+
+
+@app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
-   
-        
-        return request.form["email"] + " " +request.form["password"] 
+
+        return request.form["email"] + " " + request.form["password"]
 
     else:
         return render_template("login.html")
-@app.route('/signup',methods=["GET","POST"])
+
+
+@app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == 'POST':
-        return request.form["username"]+ " " +request.form["email"] + " " +request.form["password"] 
+        return request.form["username"]+"\n"
+        +request.form["email"] + "\n"
+        +request.form["password"] + "\n"
+        + request.form["repeat-password"]
 
     else:
         return render_template("signup.html")
-if __name__ == '__main__':                        
+
+
+if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
-    
