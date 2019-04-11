@@ -5,10 +5,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "./app.py:/flaskapp"
-      - "./static:/flaskapp"
-      - "./templates:/flaskapp"
+      - "./app:/app"
+
     tty: true
     environment:
       TZ : Asia/Tokyo
-    command: bin/bash
+    command: python3 /app/app.py
