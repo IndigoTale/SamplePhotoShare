@@ -14,8 +14,8 @@ aws_session = boto3.Session(
     aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
     region_name=aws_session_info["REGION_NAME"]
 )
-userTable = boto3.resource('dynamodb',).Table('userTable')
-postTable = boto3.resource('dynamodb').Table('postTable')
+userTable = boto3.resource('dynamodb',region_name='us-east-1').Table('userTable')
+postTable = boto3.resource('dynamodb',region_name='us-east-1').Table('postTable')
 
 
 def signUpCheck(username, email, password, repeat_password):
