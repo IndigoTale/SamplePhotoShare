@@ -5,11 +5,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "./.aws:/home/flaskapp/.aws"
-      - "./app:/home/flaskapp/app"
-
-    user: "flaskapp:flaskapp"
+      - "./app:/app"
     tty: true
     environment:
       TZ : Asia/Tokyo
-    command: python3 /home/flaskapp/app/app.py
+    command: python3 /app/app.py

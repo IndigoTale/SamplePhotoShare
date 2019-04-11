@@ -2,8 +2,19 @@ from flask import render_template
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
-import hashlib
-userTable = boto3.resource('dynamodb').Table('userTable')
+import hashlib,json
+
+with open("aws_session_info.json","r") as file:
+    aws_session_info= json.load(file)
+if aws_session_info is None:
+    exit(1)
+
+aws_session = boto3.Session(
+    aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
+    aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
+    region_name=aws_session_info["REGION_NAME"]
+)
+userTable = boto3.resource('dynamodb',).Table('userTable')
 postTable = boto3.resource('dynamodb').Table('postTable')
 
 
