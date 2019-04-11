@@ -24,7 +24,7 @@ def signup():
         return request.form["username"]+ " " +request.form["email"] + " " +request.form["password"] 
 
     else:
-        return render_template("login.html")
+        return render_template("signup.html")
 if __name__ == '__main__':                        
     app.run(host="0.0.0.0", port=80, debug=True)
     
