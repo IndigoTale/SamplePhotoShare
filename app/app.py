@@ -12,10 +12,9 @@ def add_user():
 @app.route('/login',methods=["GET","POST"])
 def login():
     if request.method == 'POST':
-        for a in request.form:
-            print(a)
+   
         
-        return "Hello"
+        return request.form["email"]
     else:
         return render_template("login.html")
 
