@@ -5,8 +5,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "~/.aws:/home/flaskapp/.aws"
-      - "app:/home/flaskapp/app"
+      - "./.aws:/home/flaskapp/.aws"
+      - "./app:/home/flaskapp/app"
 
     user: "flaskapp:flaskapp"
     tty: true
