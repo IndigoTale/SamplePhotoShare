@@ -12,4 +12,4 @@ services:
     tty: true
     environment:
       TZ : Asia/Tokyo
-    command: bin/bash
+    command: python3 /home/flaskapp/app/app.py
