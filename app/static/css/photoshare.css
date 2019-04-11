@@ -1,23 +1,246 @@
+body {
+    background-color: black;
+}
 
 .userMenuButton {
     margin-left: auto;
+   
+}
 
+ .userMenuButton button{
+    background-color: rgba(255, 255, 255, 0.0)
 }
+
+
+.userMenuButton button img {
+    height: 30px;
+    width: 30px;
+}
+
+/* 
+.userMenuButton a{
+    font-size: calc(20px + 1.0vw);
+} */
+
 .siteMenuButton {
-    margin:3px;
+    margin: 3px;
 }
+
+.siteMenuButton button{
+    background-color: rgba(255, 255, 255, 0.0)
+}
+
+.siteMenuButton button img {
+    height: 30px;
+    width: 30px;
+}
+
+
+/*
+.siteMenuButton a{
+    font-size: calc(20px + 1.0vw);
+} */
+
 .dropdown:hover .dropdown-menu {
     display: block;
+
 }
+.dropdown-menu{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.dropdown-menu a{
+   color: white;
+}
+.dropdown-menu a:hover{
+    color: white;
+    background: rgba(100, 100, 100, 0.5);
+    transition: all 0.8s ease;
+ }
+
+
 .font-1 {
-    font-size: 30px;
-    font-family: 'Courier New', Courier, monospace;
-
+    font-size: calc(30px + 1.0vm);
 }
+
 nav {
-    background: rgba(0,0,0,0.5)  
+    background: rgba(0, 0, 0, 0.5)
 }
-.topBackgroundImage {
-    margin-top:-71px;
 
+header {
+    height: 80px;
+}
+
+.topBackgroundImage {
+    position: relative;
+    margin-top: -80px;
+}
+
+.topBackgroundImage p {
+    position: absolute;
+    /*絶対配置*/
+    color: white;
+    /*文字は白に*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+article {
+    background-color: rgba(255, 255, 255, 0.146);
+    min-height: 200px;
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 1em;
+}
+
+/* article .title{
+    font-size:20px;
+    width: 100%;
+    border-bottom: solid 1px rgba(255, 255, 255);
+    padding-left: 0.5em; 
+    
+} */
+
+article {
+    position: relative;
+}
+
+article p {
+    padding-left: 0.5em;
+    max-width: 70%;
+    float: left;
+}
+
+article a {
+    position: relative;
+    max-width: 30%;
+    float: right;
+    text-align: right;
+}
+
+article a:before {
+    content: "uploader";
+}
+
+article .title span {
+    width: 100%;
+}
+
+/*黒色フィルター ＋　キャプション*/
+
+.filter img {
+    width: 400px;
+    height: 300px;
+}
+
+.filter a {
+    display: block;
+    position: relative;
+    width: 400px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: flex-end;
+}
+
+.filter .name {
+    color: #FFF;
+    position: absolute;
+    width: 400px;
+    min-height: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 160%;
+    font-family: bolder
+}
+
+.filter a:before {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.filter a:hover:before {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+/*セピアフィルター　＋　キャプション*/
+
+.caption {
+    position: relative;
+}
+
+.caption .text {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.8s ease;
+    text-align: left;
+}
+
+.caption .text p {
+    margin: 0;
+    color: white;
+    font-size: 100%;
+    display: inline;
+}
+
+.caption .text p label {
+    border-radius: 10px 10px 10px 10px;
+    padding:   0px 10px 0px  10px;
+    float: left;
+    
+}
+
+.caption .text p label:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.8s ease;
+}
+
+
+
+.caption .text p button {
+    border-radius: 10px 10px 10px 10px;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: none;
+    float: right;
+    color: white;
+}
+.caption .text p button img {
+    height: 15px;
+    width: 15px;
+    
+}
+.caption .text p button:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.8s ease;
+}
+
+.caption:hover .text {
+    opacity: 1;
+}
+.copyright {
+    margin: 1em;
+    color: white;
+    text-align: center;
 }
