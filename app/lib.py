@@ -42,7 +42,9 @@ def signUpCheck(username, email, password, repeat_password):
         print(e.response['Error']['Message'])
         return False, 4
 
-    if res is not None:
+    print(2, res["Item"])
+    if res["Item"] is not None:
+        
         return False, 2
     try:
         res = userTable.get_item(
@@ -53,7 +55,10 @@ def signUpCheck(username, email, password, repeat_password):
     except ClientError as e:
         print(e.response['Error']['Message'])
         return False, 4
-    if res is not None:
+
+    print(3, res["Item"])
+    if res['Item'] is not None:
+
         return False, 3
 
     userTable.put_item(
