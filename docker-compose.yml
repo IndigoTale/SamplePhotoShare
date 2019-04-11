@@ -1,6 +1,6 @@
 version: "2"
 services:
-  samplephotoshare_flask:
+  flask:
     build: .
     ports:
       - "80:80"
