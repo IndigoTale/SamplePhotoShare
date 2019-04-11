@@ -18,7 +18,13 @@ def login():
 
     else:
         return render_template("login.html")
+@app.route('/signup',methods=["GET","POST"])
+def signup():
+    if request.method == 'POST':
+        return request.form["username"]+ " " +request.form["email"] + " " +request.form["password"] 
 
+    else:
+        return render_template("login.html")
 if __name__ == '__main__':                        
     app.run(host="0.0.0.0", port=80, debug=True)
     
