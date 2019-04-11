@@ -14,8 +14,6 @@ response = table.put_item(
     Item={
         "userId":userId,
         "password":hashlib.sha256(password.encode()).hexdigest()
-    
-    
     }
 )
 
