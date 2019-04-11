@@ -13,7 +13,9 @@ table = dynamodb.Table('userTable')
 response = table.put_item(
     Item={
         "userId":userId,
-        "password":hashlib.sha256(password).hexdigest()
+        "password":hashlib.sha256(password.encode()).hexdigest()
+    
+    
     }
 )
 
