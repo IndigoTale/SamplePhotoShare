@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect, session
+from flask_login import LoginManager,login_user,login_required
 import json
 import lib
+from datetime import timedelta
 app = Flask(__name__)
+app.permanent_session_lifetime = timedelta(day=1)
 
 
 @app.route('/')
@@ -14,26 +17,30 @@ def add_user():
     return "Hello World!"
 
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login', methods=["GET"])
+def loginForm():
+    return render_template("login.html")
+
+
+@app.route('/login', methods=["POST"])
 def login():
-    if request.method == 'POST':
-
-        return request.form["email"] + " " + request.form["password"]
-
-    else:
-        return render_template("login.html")
+    return request.form["email"] + " " + request.form["password"]
 
 
-@app.route('/signup', methods=["GET", "POST"])
+@app.route('/signup', methods=["GET"])
+def signupForm():
+    return render_template("signup.html", code=0)
+
+
+@app.route('/signup', methods=["POST"])
 def signup():
-    if request.method == 'POST':
-        return request.form["username"]+"\n"
-        +request.form["email"] + "\n"
-        +request.form["password"] + "\n"
-        + request.form["repeat-password"]
 
-    else:
-        return render_template("signup.html")
+    flag = lib.signUpCheck(request.form["username"], request.form["email"],
+                           request.form["password"], request.form["repeat-password"])
+    if flag[0]:
+        print()
+
+    return 0
 
 
 if __name__ == '__main__':

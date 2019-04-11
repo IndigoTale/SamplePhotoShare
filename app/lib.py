@@ -1,28 +1,50 @@
 from flask import render_template
 import boto3
+from boto3.dynamodb.conditions import Key, Attr
+from botocore.exceptions import ClientError
+import hashlib
+userTable = boto3.resource('dynamodb').Table('userTable')
+postTable = boto3.resource('dynamodb').Table('postTable')
 
 
 def signUpCheck(username, email, password, repeat_password):
     # コード
     # 0 異常なし
     # 1 再入力パスワードが一致しない
-    # 2 同じUsernameが存在
-    # 3 同じメールアドレスが存在
+    # 2 同じuserId(メールアドレス)が存在
+    # 3 同じUsernameが存在
+    # 4 入力パラメタがおかしい　or サーバの不調
+
     if password != repeat_password:
-        return render_template("signup.html", code=1)
-    boto3.client("")
+        return False, 1
+    res = None
+    try:
+        res = userTable.get_item(
+            Key={
+                'userId': email
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+        return False, 4
 
+    if res["Item"] is not None:
+        return False, 2
+    try:
+        res = userTable.get_item(
+            Key={
+                'userName': username
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+        return False, 4
+    if res["Item"] is not None:
+        return False, 3
 
-try:
-    response = table.get_item(
-        Key={
-            'year': year,
-            'title': title
+    userTable.put_item(
+        Item={
+            "userId": email, "password": hashlib.sha256(password.encode()).hexdigest(), "userName": username
         }
     )
-except ClientError as e:
-    print(e.response['Error']['Message'])
-else:
-    item = response['Item']
-    print("GetItem succeeded:")
-    print(json.dumps(item, indent=4, cls=DecimalEncoder))
+    return True, 0
