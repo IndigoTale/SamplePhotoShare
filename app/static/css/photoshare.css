@@ -1,2 +1,23 @@
 
+.userMenuButton {
+    margin-left: auto;
 
+}
+.siteMenuButton {
+    margin:3px;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.font-1 {
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+nav {
+    background: rgba(0,0,0,0.5)  
+}
+.topBackgroundImage {
+    margin-top:-71px;
+
+}
