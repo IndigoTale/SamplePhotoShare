@@ -4,7 +4,7 @@ from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
 import hashlib,json
 
-with open("aws_session_info.json","r") as file:
+with open("/app/aws_session_info.json","r") as file:
     aws_session_info= json.load(file)
 if aws_session_info is None:
     exit(1)
