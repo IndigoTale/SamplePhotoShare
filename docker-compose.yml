@@ -1,0 +1,14 @@
+version: 2
+services:
+  flask:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - "./app.py:/flaskapp"
+      - "./static:/flaskapp"
+      - "./templates:/flaskapp"
+    tty: true
+    environment:
+      TZ : Asia/Tokyo
+    command: python3 /flaskapp/app.py
