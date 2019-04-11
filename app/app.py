@@ -4,7 +4,7 @@ import json
 import lib
 from datetime import timedelta
 app = Flask(__name__)
-app.permanent_session_lifetime = timedelta(day=1)
+app.permanent_session_lifetime = timedelta(date=1)
 
 
 @app.route('/')
