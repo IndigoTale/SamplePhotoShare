@@ -15,16 +15,28 @@
         <img class="mb-4" src="static/img/icon-userMenu.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
         <p>アカウントを新規作成します．</p>
-        <label for="inputUsername" class="sr-only" >Username</label>
+        <div style="color:red">
+            {% if code == 1 %}
+            <p>再入力パスワードが間違っています．</p>
+            {% elif code == 2 %}
+            <p>そのメールアドレスはすでに使われています．</p>
+            {% elif code == 3 %}
+            <p>そのユーザ名はすでに使われています．</p>
+            {% elif code == 4 %}
+            <p>正しいフォーマットで入力してください．</p>
+            {% endif %}
+        </div>
+        <label for="inputUsername" class="sr-only">Username</label>
         <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required>
-        
-        <label for="inputEmail" class="sr-only" >Email</label>
+
+        <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required>
-        
+
         <label for="inputPassword" class="sr-only">password</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <label for="inputRepeatPassword" class="sr-only">Repeat password</label>
-        <input type="password" id="inputRepeatPassword" name="repeat-password" class="form-control" placeholder="Repeat password" required>
+        <input type="password" id="inputRepeatPassword" name="repeat-password" class="form-control"
+            placeholder="Repeat password" required>
 
         <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2019 Photo Share. All Rights Reserved.</p>

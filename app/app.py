@@ -38,9 +38,9 @@ def signup():
     flag = lib.signUpCheck(request.form["username"], request.form["email"],
                            request.form["password"], request.form["repeat-password"])
     if flag[0]:
-        print()
-
-    return 0
+        redirect('/index')
+    else:
+        return render_template('signup.html',code=flag[1]) 
 
 
 if __name__ == '__main__':
