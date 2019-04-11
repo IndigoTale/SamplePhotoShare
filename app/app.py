@@ -14,7 +14,7 @@ def login():
     if request.method == 'POST':
    
         
-        return request.form["email"] + " " +request.form["passward"] 
+        return request.form["email"] + " " +request.form["password"] 
 
     else:
         return render_template("login.html")
