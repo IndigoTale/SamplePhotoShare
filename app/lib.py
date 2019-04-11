@@ -2,12 +2,15 @@ from flask import render_template
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
-import hashlib,json
+import hashlib,json,os
 
-with open("/app/aws_session_info.json","r") as file:
-    aws_session_info= json.load(file)
+with open("/app/aws_session_info.json","r") as f:
+    aws_session_info= json.load(f)
+
 if aws_session_info is None:
     exit(1)
+print(os.getcwd())
+print(os.listdir(os.getcwd()))
 
 aws_session = boto3.Session(
     aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
