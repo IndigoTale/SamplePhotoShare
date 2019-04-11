@@ -7,8 +7,10 @@ services:
     volumes:
       - "~/.aws:/home/flaskapp/.aws"
       - ".app:/home/flaskapp/app"
+
     user: "flaskapp:flaskapp"
     tty: true
     environment:
       TZ : Asia/Tokyo
+    command: pwd && ls
     command: python3 /home/flaskapp/app/app.py
