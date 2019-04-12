@@ -7,24 +7,6 @@ from datetime import timedelta
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 
-# 各route関数の前に実行される処理
-@app.before_request
-def before_request():
-   # 静的ファイルへのアクセスについては、チェック対象としない
-   if request.path.startswith('/static/'):
-       return
-   # セッションにusernameが保存されている．つまりログイン済み
-   if session.get('user_id') is not None:
-       return redirect('/index')
-
-   # リクエストパスがログインページに関する場合
-   if request.path == '/login' or request.path == '/index' :
-       return redirect('/index')
-   # ログインされておらず，ログインページに関するリクエストでない場合
-   return redirect('/login')
-
-
-
 @app.route('/')
 def index():
     return render_template("index.html")
