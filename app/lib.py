@@ -19,16 +19,12 @@ if aws_session_info is None:
 print(os.getcwd())
 print(os.listdir(os.getcwd()))
 
-# aws_session = boto3.Session(
-#     aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
-#     aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
-#     region_name=aws_session_info["REGION_NAME"]
-# )
 aws_session = boto3.Session(
-    aws_access_key_id='AKIAZPKDKNMZRUJNVJ5S',
-    aws_secret_access_key='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',
-    region_name='us-east-1'
+    aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
+    aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
+    region_name=aws_session_info["REGION_NAME"]
 )
+
 userIdTable = aws_session.resource(
     'dynamodb').Table('userIdTable')
 userNameTable = aws_session.resource(
