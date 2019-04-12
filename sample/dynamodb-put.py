@@ -27,6 +27,7 @@ response = table.put_item(
         "userId": userId,
         "password": hashlib.sha256(password.encode()).hexdigest(),
         "userName": username,
+        "signUpDate":sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
         "signUpYear": sign_up_date.strftime('%Y'),
         "signUpMonth": sign_up_date.strftime('%m'),
         "signUpDay": sign_up_date.strftime('%d'),
