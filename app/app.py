@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 
 @app.route('/')
+@app.route('/index/')
 def index():
     return render_template("index.html")
 
@@ -27,7 +28,7 @@ def login():
     result = lib.login_by_email(request.form["email"],request.form["password"])
     if result[0] is True:
         session['user_id'] =  result[1]
-        return redirect(url_for('/'))
+        return redirect(url_for('index'))
     else:
         return render_template('login.html', code=result[1])
 
