@@ -19,6 +19,7 @@ if aws_session_info is None:
 print(os.getcwd())
 print(os.listdir(os.getcwd()))
 
+
 aws_session = boto3.Session(
     aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
     aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
