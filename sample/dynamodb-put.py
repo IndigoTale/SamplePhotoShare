@@ -21,7 +21,7 @@ aws_session = boto3.Session(
     region_name=aws_session_info["REGION_NAME"]
 )
 dynamodb = aws_session.resource('dynamodb')
-table = dynamodb.Table('userTable')
+table = dynamodb.Table('userIdTable')
 response = table.put_item(
     Item={
         "userId": userId,
