@@ -15,11 +15,11 @@ def before_request():
        return
    # セッションにusernameが保存されている．つまりログイン済み
    if session.get('user_id') is not None:
-       return
+       return redirect('/index')
 
    # リクエストパスがログインページに関する場合
-   if request.path == '/login':
-       return
+   if request.path == '/login' or request.path == '/index' :
+       return redirect('/index')
    # ログインされておらず，ログインページに関するリクエストでない場合
    return redirect('/login')
 
