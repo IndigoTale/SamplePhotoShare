@@ -16,9 +16,6 @@ with open("/app/aws_session_info.json", "r") as f:
 
 if aws_session_info is None:
     exit(1)
-print(os.getcwd())
-print(os.listdir(os.getcwd()))
-
 
 aws_session = boto3.Session(
     aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],

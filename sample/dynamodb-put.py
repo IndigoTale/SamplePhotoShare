@@ -3,17 +3,35 @@ import json
 import uuid
 import hashlib
 from boto3.dynamodb.conditions import Key, Attr
+from datetime import datetime
+username="user0"
+userId = "user0@test.com"
+password = "password0"
+sign_up_date = datetime.now()
 
-userId="x@d.com"
-password="password"
+with open("../app/aws_session_info.json", "r") as f:
+    aws_session_info = json.load(f)
 
-dynamodb = boto3.resource('dynamodb')
+if aws_session_info is None:
+    exit(1)
+
+aws_session = boto3.Session(
+    aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
+    aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
+    region_name=aws_session_info["REGION_NAME"]
+)
+dynamodb = aws_session.resource('dynamodb')
 table = dynamodb.Table('userTable')
-
 response = table.put_item(
     Item={
-        "userId":userId,
-        "password":hashlib.sha256(password.encode()).hexdigest()
+        "userId": userId,
+        "password": hashlib.sha256(password.encode()).hexdigest(),
+        "userName": username,
+        "signUpYear": sign_up_date.strftime('%Y'),
+        "signUpMonth": sign_up_date.strftime('%m'),
+        "signUpDay": sign_up_date.strftime('%d'),
+        "signUpHour": sign_up_date.strftime('%H'),
+        "signUpMinute": sign_up_date.strftime('%M'),
+        "signUpSecond": sign_up_date.strftime('%S')
     }
 )
-
