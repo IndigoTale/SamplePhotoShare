@@ -23,7 +23,7 @@ aws_session = boto3.Session(
 dynamodb = aws_session.resource('dynamodb')
 table = dynamodb.Table('userIdTable')
 response = table.get_item(
-    Item={
+    Key={
         "userId": userId,
         "password": hashlib.sha256(password.encode()).hexdigest(),
         "userName": username,
