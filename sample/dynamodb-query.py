@@ -24,6 +24,7 @@ dynamodb = aws_session.resource('dynamodb')
 table = dynamodb.Table('userIdTable')
 response = table.get_item(
     Key={
-        "userId": userId
+        "userId": userId,
+        "signUpDate":"dsdaw"
     }
 )
