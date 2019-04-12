@@ -2,10 +2,17 @@ from flask import render_template
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
-import hashlib,json,os
+import hashlib
+import json
+import os
 
-with open("/app/aws_session_info.json","r") as f:
-    aws_session_info= json.load(f)
+# タイムゾーンの作成
+from datetime import datetime, timedelta, timezone
+JST = timezone(timedelta(hours=+9), 'JST')
+
+
+with open("/app/aws_session_info.json", "r") as f:
+    aws_session_info = json.load(f)
 
 if aws_session_info is None:
     exit(1)
@@ -17,8 +24,12 @@ aws_session = boto3.Session(
     aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
     region_name=aws_session_info["REGION_NAME"]
 )
-userTable = aws_session.resource('dynamodb',region_name='us-east-1').Table('userTable')
-postTable = aws_session.resource('dynamodb',region_name='us-east-1').Table('postTable')
+userIdTable = aws_session.resource(
+    'dynamodb', region_name='us-east-1').Table('userIdTable')
+userNameTable = aws_session.resource(
+    'dynamodb', region_name='us-east-1').Table('userNameTable')
+postTable = aws_session.resource(
+    'dynamodb', region_name='us-east-1').Table('postTable')
 
 
 def signUpCheck(username, email, password, repeat_password):
@@ -33,7 +44,7 @@ def signUpCheck(username, email, password, repeat_password):
         return False, 1
     res = None
     try:
-        res = userTable.get_item(
+        res = userIdTable.get_item(
             Key={
                 'userId': email
             }
@@ -42,11 +53,11 @@ def signUpCheck(username, email, password, repeat_password):
         print(e.response['Error']['Message'])
         return False, 4
 
-
     if res.get('Item'):
         return False, 2
+
     try:
-        res = userTable.get_item(
+        res = userNameTable.get_item(
             Key={
                 'userName': username
             }
@@ -54,12 +65,77 @@ def signUpCheck(username, email, password, repeat_password):
     except ClientError as e:
         print(e.response['Error']['Message'])
         return False, 4
+
     if res.get('Item'):
         return False, 3
 
-    userTable.put_item(
+    sign_up_date = datetime.now(JST)
+    userIdTable.put_item(
         Item={
-            "userId": email, "password": hashlib.sha256(password.encode()).hexdigest(), "userName": username
+            "userId": email,
+            "password": hashlib.sha256(password.encode()).hexdigest(),
+            "userName": username,
+            "signUpYear": sign_up_date.strftime('%Y'),
+            "signUpMonth": sign_up_date.strftime('%m'),
+            "signUpDay": sign_up_date.strftime('%d'),
+            "signUpHour": sign_up_date.strftime('%H'),
+            "signUpMinute": sign_up_date.strftime('%M'),
+            "signUpSecond": sign_up_date.strftime('%S')
+        }
+    )
+    userNameTable.put_item(
+        Item={
+            "userName": username,
+            "userId": email,
+            "password": hashlib.sha256(password.encode()).hexdigest(),
+            "signUpYear": sign_up_date.strftime('%Y'),
+            "signUpMonth": sign_up_date.strftime('%m'),
+            "signUpDay": sign_up_date.strftime('%d'),
+            "signUpHour": sign_up_date.strftime('%H'),
+            "signUpMinute": sign_up_date.strftime('%M'),
+            "signUpSecond": sign_up_date.strftime('%S')
         }
     )
     return True, 0
+
+
+def login_by_email(email, password):
+        # コード
+        # 1 パスワードが間違っている．
+        # 2 ユーザが存在しない
+    try:
+        res = userIdTable.get_item(
+            Key={
+                'userId': email
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    if res.get('Item'):
+        if res.get('Item')['password'] == hashlib.sha256(password.encode()).hexdigest():
+            return True, res.get('Item')['userId'], res.get('Item')['userName']
+        else:
+            return False, 1
+    else:
+        return False, 2
+
+
+def login_by_username(username, password):
+    # コード
+    # 1 パスワードが間違っている．
+    # 2 ユーザが存在しない
+    try:
+        res = userNameTable.get_item(
+            Key={
+                'userName': username
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    if res.get('Item'):
+        if res.get('Item')['password'] == hashlib.sha256(password.encode()).hexdigest():
+            return True, res.get('Item')['userId'], res.get('Item')['userName']
+        else:
+            return False, 1
+    else:
+        return False, 2

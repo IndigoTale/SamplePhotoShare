@@ -2,8 +2,26 @@ from flask import Flask, render_template, request, url_for, redirect, session
 from flask_login import LoginManager,login_user,login_required
 import json
 import lib
+from lib import *
 from datetime import timedelta
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.urandom(24)
+
+# 各route関数の前に実行される処理
+@app.before_request
+def before_request():
+   # 静的ファイルへのアクセスについては、チェック対象としない
+   if request.path.startswith('/static/'):
+       return
+   # セッションにusernameが保存されている．つまりログイン済み
+   if session.get('user_id') is not None:
+       return
+
+   # リクエストパスがログインページに関する場合
+   if request.path == '/login':
+       return
+   # ログインされておらず，ログインページに関するリクエストでない場合
+   return redirect('/login')
 
 
 
@@ -24,7 +42,12 @@ def loginForm():
 
 @app.route('/login', methods=["POST"])
 def login():
-    return request.form["email"] + " " + request.form["password"]
+    result = lib.login_by_email(request.form["email"],request.form["password"])
+    if result[0] is True:
+        session['user_id'] =  result[1]
+        return redirect(url_for('index'))
+    else:
+        return render_template('login.html', code=result[1])
 
 
 @app.route('/signup', methods=["GET"])
@@ -44,4 +67,4 @@ def signup():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80, debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True, threaded=True)
