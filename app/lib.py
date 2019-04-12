@@ -74,25 +74,21 @@ def signUpCheck(username, email, password, repeat_password):
             "userId": email,
             "password": hashlib.sha256(password.encode()).hexdigest(),
             "userName": username,
+            "signUpDate":sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
             "signUpYear": sign_up_date.strftime('%Y'),
             "signUpMonth": sign_up_date.strftime('%m'),
             "signUpDay": sign_up_date.strftime('%d'),
-            "signUpHour": sign_up_date.strftime('%H'),
-            "signUpMinute": sign_up_date.strftime('%M'),
-            "signUpSecond": sign_up_date.strftime('%S')
         }
     )
     userNameTable.put_item(
         Item={
-            "userName": username,
             "userId": email,
             "password": hashlib.sha256(password.encode()).hexdigest(),
+            "userName": username,
+            "signUpDate":sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
             "signUpYear": sign_up_date.strftime('%Y'),
             "signUpMonth": sign_up_date.strftime('%m'),
             "signUpDay": sign_up_date.strftime('%d'),
-            "signUpHour": sign_up_date.strftime('%H'),
-            "signUpMinute": sign_up_date.strftime('%M'),
-            "signUpSecond": sign_up_date.strftime('%S')
         }
     )
     return True, 0
