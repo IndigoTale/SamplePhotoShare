@@ -104,6 +104,9 @@ def login_by_email(email, password):
         )
     except ClientError as e:
         print(e.response['Error']['Message'])
+    else:
+        pass
+
     if res.get('Item'):
         if res.get('Item')['password'] == hashlib.sha256(password.encode()).hexdigest():
             return True, res.get('Item')['userId'], res.get('Item')['userName']
@@ -125,6 +128,9 @@ def login_by_username(username, password):
         )
     except ClientError as e:
         print(e.response['Error']['Message'])
+    else:
+        pass
+
     if res.get('Item'):
         if res.get('Item')['password'] == hashlib.sha256(password.encode()).hexdigest():
             return True, res.get('Item')['userId'], res.get('Item')['userName']
