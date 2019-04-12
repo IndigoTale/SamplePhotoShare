@@ -42,6 +42,7 @@ def signUpCheck(username, email, password, repeat_password):
     if password != repeat_password:
         return False, 1
     res = None
+    print('1'*20)
     try:
         res = userIdTable.get_item(
             Key={
@@ -51,7 +52,7 @@ def signUpCheck(username, email, password, repeat_password):
     except ClientError as e:
         print(e.response['Error']['Message'])
         return False, 4
-    print('1'*20)
+   
     if res.get('Item'):
         return False, 2
 

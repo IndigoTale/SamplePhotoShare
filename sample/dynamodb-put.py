@@ -31,8 +31,5 @@ response = table.put_item(
         "signUpYear": sign_up_date.strftime('%Y'),
         "signUpMonth": sign_up_date.strftime('%m'),
         "signUpDay": sign_up_date.strftime('%d'),
-        "signUpHour": sign_up_date.strftime('%H'),
-        "signUpMinute": sign_up_date.strftime('%M'),
-        "signUpSecond": sign_up_date.strftime('%S')
     }
 )
