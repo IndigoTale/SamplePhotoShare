@@ -52,7 +52,7 @@ def signUpCheck(username, email, password, repeat_password):
     except ClientError as e:
         print(e.response['Error']['Message'])
         return False, 4
-
+    print('1'*20)
     if res.get('Item'):
         return False, 2
 
@@ -65,7 +65,7 @@ def signUpCheck(username, email, password, repeat_password):
     except ClientError as e:
         print(e.response['Error']['Message'])
         return False, 4
-
+    print('2'*20)
     if res.get('Item'):
         return False, 3
 
