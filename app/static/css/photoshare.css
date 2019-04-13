@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
 a {
@@ -256,4 +256,5 @@ article .title span {
     margin: 1em;
     color: white;
     text-align: center;
+    background-color: rgb(50, 50, 50)
 }
