@@ -2,7 +2,12 @@ body {
     background-color: black;
     color: white;
 }
-
+a {
+    color: white;
+}
+a:link{
+    color:white;
+}
 
 .userMenuButton {
     margin-left: auto;
