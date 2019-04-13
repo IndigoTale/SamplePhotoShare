@@ -67,6 +67,9 @@ def signup():
         return redirect('https://photoshare.tk')
     else:
         return render_template('signup.html', code=flag[1])
+@app.route('/upload',methods=['GET'])
+def upload_form():
+    return render_template('upload.html')
 
 
 if __name__ == '__main__':
