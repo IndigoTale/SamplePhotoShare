@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(20,20,20);
     color: white;
 }
 a {
@@ -253,8 +253,9 @@ article .title span {
     opacity: 1;
 }
 .copyright {
-    margin: 1em;
+    margin-top: 1em;
     color: white;
     text-align: center;
-    background-color: rgb(50, 50, 50)
+    background-color: rgb(50, 50, 50);
+    width:100%;
 }
