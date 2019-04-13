@@ -10,13 +10,16 @@ app.config['SECRET_KEY'] = os.urandom(24)
 @app.route('/')
 @app.route('/index/')
 def index():
-    return render_template("index.html")
+    if session.get('user_id') is not None:
+        return render_template('login-index.html',user_id=session.get('user_id'))
+    else:
+        return render_template("index.html")
 
 
 @app.route('/add_user')
 def add_user():
     return "Hello World!"
-
+    
 
 @app.route('/login', methods=["GET"])
 def loginForm():
