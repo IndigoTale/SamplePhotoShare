@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = os.urandom(24)
 def index():
     if session.get('user_id') is not None:
         res = queryUserIdTable(session.get('user_id'))
-        if res[0]:
+        if res[0] is True:
             return render_template('login-index.html', username=res[2])
         else:
             return render_template("index.html")
