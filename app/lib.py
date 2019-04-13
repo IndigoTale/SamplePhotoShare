@@ -5,10 +5,12 @@ from botocore.exceptions import ClientError
 import hashlib
 import json
 import os
-
+import uuid
 # タイムゾーンの作成
 from datetime import datetime, timedelta, timezone
 JST = timezone(timedelta(hours=+9), 'JST')
+# 投稿可能な画像の拡張子
+ALLOWED_EXTENSIONS = ('png', 'jpeg')
 
 
 with open("/app/aws_session_info.json", "r") as f:
@@ -27,8 +29,8 @@ userIdTable = aws_session.resource(
     'dynamodb').Table('userIdTable')
 userNameTable = aws_session.resource(
     'dynamodb').Table('userNameTable')
-postTable = aws_session.resource(
-    'dynamodb').Table('postTable')
+photoTable = aws_session.resource(
+    'dynamodb').Table('photoTable')
 
 
 def signUpCheck(username, email, password, repeat_password):
@@ -78,17 +80,22 @@ def signUpCheck(username, email, password, repeat_password):
             "signUpDay": sign_up_date.strftime('%d'),
         }
     )
-    userNameTable.put_item(
-        Item={
-            "userId": email,
-            "password": hashlib.sha256(password.encode()).hexdigest(),
-            "userName": username,
-            "signUpDate": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
-            "signUpYear": sign_up_date.strftime('%Y'),
-            "signUpMonth": sign_up_date.strftime('%m'),
-            "signUpDay": sign_up_date.strftime('%d'),
-        }
-    )
+    try:
+       userNameTable.put_item(
+            Item={
+                "userId": email,
+                "password": hashlib.sha256(password.encode()).hexdigest(),
+                "userName": username,
+                "signUpDate": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+                "signUpYear": sign_up_date.strftime('%Y'),
+                "signUpMonth": sign_up_date.strftime('%m'),
+                "signUpDay": sign_up_date.strftime('%d'),
+            }
+        )
+    except Exception as e:
+        print(e)
+    else:
+        pass
     return True, 0
 
 
@@ -157,3 +164,30 @@ def queryUserIdTable(user_id):
         return True, res.get('Item')['userId'], res.get('Item')['userName']
     else:
         return False, 1
+
+
+def uploadPhoto(user_id, username):
+    photo_id = uuid.uuid4()
+
+    photoTable.put_item(
+        Item={
+            "photo_id": photo_id,
+            "user_id": user_id,
+            "username": username,
+            "heart": 0,
+            "comments": [],
+        }
+    )
+
+
+def updatePhoto(photo_id, user_id):
+    try:
+        res = photoTable.get_item(
+            Key={
+                'photo_id': photo_id
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        pass
