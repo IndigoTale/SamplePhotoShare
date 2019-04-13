@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect, session
-from flask_login import LoginManager,login_user,login_required
+from flask_login import LoginManager, login_user, login_required
 import json
 import lib
 from lib import *
@@ -7,11 +7,16 @@ from datetime import timedelta
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 
+
 @app.route('/')
 @app.route('/index/')
 def index():
     if session.get('user_id') is not None:
-        return render_template('login-index.html',user_id=session.get('user_id'))
+        res = queryUserIdTable(session.get('user_id'))
+        if res[0]:
+            return render_template('login-index.html', username=res[2])
+        else:
+            return render_template("index.html")
     else:
         return render_template("index.html")
 
@@ -28,19 +33,23 @@ def loginForm():
 
 @app.route('/login', methods=["POST"])
 def login():
-    result = lib.login_by_email(request.form["email"],request.form["password"])
+    result = lib.login_by_email(
+        request.form["email"], request.form["password"])
     if result[0] is True:
-        session['user_id'] =  result[1]
+        session['user_id'] = result[1]
         return redirect('https://photoshare.tk')
     else:
         return render_template('login.html', code=result[1])
-@app.route('/logout',methods=['GET'])
+
+
+@app.route('/logout', methods=['GET'])
 def logout():
     if session.get('user_id') is not None:
-        session.pop('user_id',None) 
+        session.pop('user_id', None)
         return redirect('https://photoshare.tk')
     else:
         return redirect('https://photoshare.tk')
+
 
 @app.route('/signup', methods=["GET"])
 def signupForm():
@@ -55,7 +64,7 @@ def signup():
     if flag[0]:
         return redirect('https://photoshare.tk')
     else:
-        return render_template('signup.html',code=flag[1]) 
+        return render_template('signup.html', code=flag[1])
 
 
 if __name__ == '__main__':
