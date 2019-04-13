@@ -19,7 +19,7 @@ def index():
 @app.route('/add_user')
 def add_user():
     return "Hello World!"
-    
+
 
 @app.route('/login', methods=["GET"])
 def loginForm():
@@ -34,7 +34,13 @@ def login():
         return redirect('https://photoshare.tk')
     else:
         return render_template('login.html', code=result[1])
-
+@app.route('/logout',methods=['GET'])
+def logout():
+    if session.get('user_id') is not None:
+        session.pop('user_id',None) 
+        return redirect('https://photoshare.tk')
+    else:
+        return redirect('https://photoshare.tk')
 
 @app.route('/signup', methods=["GET"])
 def signupForm():

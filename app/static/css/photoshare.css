@@ -3,6 +3,7 @@ body {
     color: white;
 }
 
+
 .userMenuButton {
     margin-left: auto;
    
@@ -17,6 +18,10 @@ body {
 .userMenuButton button img {
     height: 30px;
     width: 30px;
+}
+.dropdown-menu p{
+    color:white;
+    padding: 1em;
 }
 
 /* 
