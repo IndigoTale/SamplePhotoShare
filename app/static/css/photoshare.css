@@ -8,6 +8,11 @@ a {
 a:link{
     color:white;
 }
+a:hover{
+    color: gray;
+    transition: all 0.8s ease;
+    
+}
 
 .userMenuButton {
     margin-left: auto;
@@ -258,4 +263,7 @@ article .title span {
     text-align: center;
     background-color: rgb(50, 50, 50);
     width:100%;
+    padding-top:1em;
+    padding-bottom:1em;
+    
 }
