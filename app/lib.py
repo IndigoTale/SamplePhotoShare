@@ -50,7 +50,7 @@ def signUpCheck(username, email, password, repeat_password):
     except ClientError as e:
         print(e.response['Error']['Message'])
         return False, 4
-   
+
     if res.get('Item'):
         return False, 2
 
@@ -72,7 +72,7 @@ def signUpCheck(username, email, password, repeat_password):
             "userId": email,
             "password": hashlib.sha256(password.encode()).hexdigest(),
             "userName": username,
-            "signUpDate":sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+            "signUpDate": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
             "signUpYear": sign_up_date.strftime('%Y'),
             "signUpMonth": sign_up_date.strftime('%m'),
             "signUpDay": sign_up_date.strftime('%d'),
@@ -83,7 +83,7 @@ def signUpCheck(username, email, password, repeat_password):
             "userId": email,
             "password": hashlib.sha256(password.encode()).hexdigest(),
             "userName": username,
-            "signUpDate":sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+            "signUpDate": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
             "signUpYear": sign_up_date.strftime('%Y'),
             "signUpMonth": sign_up_date.strftime('%m'),
             "signUpDay": sign_up_date.strftime('%d'),
@@ -93,9 +93,9 @@ def signUpCheck(username, email, password, repeat_password):
 
 
 def login_by_email(email, password):
-        # コード
-        # 1 パスワードが間違っている．
-        # 2 ユーザが存在しない
+    # コード
+    # 1 パスワードが間違っている．
+    # 2 ユーザが存在しない
     try:
         res = userIdTable.get_item(
             Key={
@@ -138,3 +138,22 @@ def login_by_username(username, password):
             return False, 1
     else:
         return False, 2
+
+
+def queryUserIdTable(user_id):
+    # コード
+    # 1 ユーザが存在しない
+    try:
+        res = userIdTable.get_item(
+            Key={
+                'userId': user_id
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        pass
+    if res.get('Item'):
+        return True, res.get('Item')['userId'], res.get('Item')['userName']
+    else:
+        return False, 1
