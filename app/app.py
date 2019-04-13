@@ -62,6 +62,8 @@ def signup():
     flag = lib.signUpCheck(request.form["username"], request.form["email"],
                            request.form["password"], request.form["repeat-password"])
     if flag[0]:
+        session['user_id'] = request.form['email']
+   
         return redirect('https://photoshare.tk')
     else:
         return render_template('signup.html', code=flag[1])
