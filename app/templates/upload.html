@@ -49,10 +49,6 @@
         </div>
     </nav>
 
-    <div class="topBackgroundImage">
-        <img alt="siteMenu" src="./static/img/top.jpg" class="img-fluid">
-        <p>あなたの撮った風景をみんなでシェアしよう。</p>
-    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
@@ -87,7 +83,9 @@
                 var reader = new FileReader(); // instance of the FileReader
                 reader.readAsDataURL(files[0]); // read the local file
                 reader.onloadend = function () { // set image data as background of div
+                    
                     input.parent().parent().parent().prev('.imagePreview').css("background-image", "url(" + this.result + ")");
+                    
                 }
             }
         });

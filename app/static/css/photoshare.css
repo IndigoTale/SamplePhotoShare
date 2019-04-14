@@ -269,7 +269,8 @@ article .title span {
 }    
 .imagePreview {
     width: 100%;
-    height: auto;
+
+    height: 200px;
     background-position: center center;
     background-size: cover;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
