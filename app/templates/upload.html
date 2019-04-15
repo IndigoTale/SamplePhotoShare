@@ -115,10 +115,10 @@
                         });
 
                         var preview = document.getElementById('preview')
-                        $(preview).find('<a><span></span></a>')
+                        var content = preview.children[0].children[0]
                         console.log({ preview: preview })
                         console.log({ img: img })
-                        preview.innerHTML = jQuery('<div>').append(img[0]).html();
+                        content.innerHTML = jQuery('<div>').append(img[0]).html();
                     }
                 }
                 reader.readAsDataURL(file);
