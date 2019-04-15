@@ -75,21 +75,16 @@
     </div>
     <script>
         $(function () {
-         
+            
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
                 var file = $(this).prop('files')[0];
-                console.log({this:$(this),parent1:$(this).parent()});
-                console.log({parent2:$(this).parent().parent(),parent3:$(this).parent().parent().parent()});
-                console.log({parent4Span:$(this).parent().parent().parent().parent().find('span')});
                 // 画像以外は処理を停止
                 if (!file.type.match('image.*')) {
-                    // クリア
-                    $(this).val('')
-
                     return;
                 }
-               
+                $('input[type=text class=form-control]').val = 'xxxx';
+                
                 // 画像表示
                 var uploadImage = new Image();
                 var reader = new FileReader();
