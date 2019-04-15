@@ -52,8 +52,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <form id = "upload-form" action="" method="post" enctype="multipart/form-data">
-                    <input type="file" name="userfile" accept="image/*">
+                <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label class='input-group-btn'>
+                            <span class="btn btn-dark">
+                                Choose File
+                                <input type="file" style='display:none' class='uoloadFile' name="userfile"
+                                    accept="image/*">
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" readonly="">
+                    </div>
                 </form>
             </div>
 
@@ -77,36 +86,36 @@
                     $('span').html('');
                     return;
                 }
-                
+
                 // 画像表示
                 var uploadImage = new Image();
                 var reader = new FileReader();
                 reader.onloadend = function () {
                     uploadImage.src = reader.result;
-                    uploadImage.onload = function(){
+                    uploadImage.onload = function () {
                         var uploadForm = document.getElementById('upload-form')
                         var formWidth = uploadForm.clientWidth;
                         var imageHeight = uploadImage.naturalHeight;
                         var imageWidth = uploadImage.naturalWidth;
                         var resizeWidth = formWidth;
-                        var resizeHeight = resizeWidth * (imageHeight/imageWidth);
-                        console.log({imageHeight:imageHeight,imageWidth:imageWidth})
-                        console.log({resizeHeight:resizeHeight,resizeWidth:resizeWidth}) 
+                        var resizeHeight = resizeWidth * (imageHeight / imageWidth);
+                        console.log({ imageHeight: imageHeight, imageWidth: imageWidth })
+                        console.log({ resizeHeight: resizeHeight, resizeWidth: resizeWidth })
                         var img_src = $('<img>').attr({
                             src: uploadImage.src,
                             height: resizeHeight,
                             width: resizeWidth,
                         });
-                        $('span').html(img_src);  
+                        $('span').html(img_src);
                     }
 
-                
 
-                    
-                 
-                             
-            
-                    
+
+
+
+
+
+
 
                 }
                 reader.readAsDataURL(file);
