@@ -75,7 +75,11 @@
     </div>
     <script>
         $(function () {
-            
+            var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.parent().parent().next(':text').val(label);
+            console.log({input:input});
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
                 var file = $(this).prop('files')[0];
@@ -83,7 +87,7 @@
                 if (!file.type.match('image.*')) {
                     return;
                 }
-                $(this).parent().parent().parent().find('input[type=text]').val = 'xxxx';
+             
                 
                 // 画像表示
                 var uploadImage = new Image();
