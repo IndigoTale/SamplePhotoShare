@@ -99,7 +99,7 @@ def upload():
     if request.form.get('upload-title') and request.form.get('upload-comment') and request.file.get('upload-file'):
         title = request.form.get('upload-title')
         comment = request.form.get('upload-comment')
-        img_file = request.file.get('upload-file')
+        img_file = request.files.get('upload-file')
         if img_file and allowed_file(img_file.filename):
             filename = f"{uuid.uuid4().hex}.{img_file.filename.split('.')[1]}"            
             if lib.upload_photo_to_s3(img_file,filename) and \
