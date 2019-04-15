@@ -307,4 +307,5 @@ article .title span {
 }
 .previewFrame img{
     max-height: 298px;
+    margin:auto;
 }
