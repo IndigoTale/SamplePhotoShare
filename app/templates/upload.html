@@ -68,7 +68,14 @@
 
                         <!-- <a href="#"><span class="squareContent"></span></a> -->
                     </div>
-                    Hello
+                    <div class="form-grup">
+                        <label class="col-sm-2 control-label">タイトル</label>
+                        <input class="col-sm-10 form-control" type="text">
+                    </div>
+                    <div class="form-grup">
+                        <label class="col-sm-2 control-label">説明</label>
+                        <input class="col-sm-10 form-control" type="text">
+                    </div>
                 </form>
             </div>
 
@@ -104,40 +111,40 @@
                     uploadImage.onload = function () {
                         var imageHeight = uploadImage.naturalHeight;
                         var imageWidth = uploadImage.naturalWidth;
-                        
+
                         var preview = document.getElementById('preview')
-                       
+
 
                         var previewHeight = preview.clientHeight;
                         var previewWidth = preview.clientWidth;
-                        
-                        if (previewHeight == previewWidth){
+
+                        if (previewHeight == previewWidth) {
                             if (imageHeight <= imageWidth) {
                                 var resizeWidth = previewWidth;
-                                var resizeHeight = previewWidth*(imageHeight/imageWidth);
+                                var resizeHeight = previewWidth * (imageHeight / imageWidth);
                             }
-                            if (imageHeight > imageWidth){
-                                var resizeWidth = previewHeight*(imageWidth/imageHeight); 
+                            if (imageHeight > imageWidth) {
+                                var resizeWidth = previewHeight * (imageWidth / imageHeight);
                                 var resizeHeight = previewHeight;
                             }
-                        } 
-                        else{
+                        }
+                        else {
                             if (imageHeight == imageWidth) {
                                 var resizeWidth = previewHeight;
                                 var resizeHeight = previewHeight;
                             }
-                            if (imageHeight > imageWidth){
-                                var resizeWidth = previewHeight*(imageWidth/imageHeight); 
+                            if (imageHeight > imageWidth) {
+                                var resizeWidth = previewHeight * (imageWidth / imageHeight);
                                 var resizeHeight = previewHeight;
                             }
-                            if (imageHeight < imageWidth){
-                                if(imageHeight/imageWidth > previewHeight/previewWidth){
-                                    var resizeWidth = previewHeight*(imageWidth/imageHeight); 
+                            if (imageHeight < imageWidth) {
+                                if (imageHeight / imageWidth > previewHeight / previewWidth) {
+                                    var resizeWidth = previewHeight * (imageWidth / imageHeight);
                                     var resizeHeight = previewHeight;
                                 }
-                                else{
+                                else {
                                     var resizeWidth = previewWidth;
-                                    var resizeHeight = previewWidth*(imageHeight/imageWidth);
+                                    var resizeHeight = previewWidth * (imageHeight / imageWidth);
                                 }
                             }
                         }
@@ -145,11 +152,11 @@
                         console.log({ resizeHeight: resizeHeight, resizeWidth: resizeWidth })
                         var img = $('<img>').attr({
                             src: uploadImage.src,
-                            class:'img-fluid',
-                            style:'margin:0 auto;'
+                            class: 'img-fluid',
+                            style: 'margin:0 auto;'
                         });
 
-                
+
                         console.log({ preview: preview })
                         console.log({ img: img })
                         var content = preview
