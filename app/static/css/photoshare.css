@@ -318,10 +318,11 @@ article .title span {
 }
 .titleForm label{
     border-radius: 5px 0px 0px 5px;
+}
+.titleForm span{
     padding-left: 10px;
 }
 
 .descriptionForm label{
     border-radius: 5px 0px 0px 5px;
-    padding-left: 10px;
 }
