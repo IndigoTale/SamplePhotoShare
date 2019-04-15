@@ -21,8 +21,9 @@ aws_session = boto3.Session(
     region_name=aws_session_info["REGION_NAME"]
 )
 # S3の情報
-with open("/app/aws_s3_info.json", "r") as f:
-    aws_s3_info = json.load(f)
+with open("/app/aws_s3_info.json", "r") as fi:
+    aws_s3_info = json.load(fi)
+
 # S3操作用クラス
 photoBucket = aws_session.resource('s3').Bucket(aws_s3_info["BUCKET_NAME"])
 
@@ -229,7 +230,7 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
         upload_date = datetime.now(JST)
         photoTable.put_item(
             Item={
-                "photoCount":photo_count,
+                "photoCount":photo_number,
                 "userId": user_id,
                 "userName": username,
                 "uploadDate": upload_date.strftime('%Y-%m-%d %H:%M:%S'),

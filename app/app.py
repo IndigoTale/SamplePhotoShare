@@ -106,7 +106,7 @@ def upload():
                 lib.upload_photo_info_to_dynamodb(filename,title,comment,user_id,username):
                     return redirect(request.url)
 
-    return "Fail"
+    return redirect('https://photoshare.tk')
 
 
 if __name__ == '__main__':

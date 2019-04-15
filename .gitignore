@@ -3,4 +3,5 @@
 **.pptx
 **.aws
 **aws_session_info.json
+**aws_s3_info.json
 **mail.py
