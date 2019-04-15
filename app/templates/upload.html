@@ -151,7 +151,7 @@
                 
                         console.log({ preview: preview })
                         console.log({ img: img })
-                        var content = preview.children[0].children[0]
+                        var content = preview
                         content.innerHTML = jQuery('<div>').append(img[0]).html();
                     }
                 }
