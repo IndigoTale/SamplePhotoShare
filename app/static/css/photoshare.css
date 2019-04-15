@@ -304,7 +304,7 @@ article .title span {
     width: 100%;
     height: 300px;
     border: 1px dotted #999;
-    display: inline;
+    align-content: center;
 }
 .previewFrame img{
     max-height: 298px;
