@@ -22,7 +22,7 @@
         <a class="navbar-brand font-1" href="#">
             Photo Share
         </a>
-        <nav> </nav>
+  
         <div class="btn-group userMenuButton">
             <button type="button" class="btn btn-md  rounded-0" data-toggle="dropdown">
                 <img alt="userMenu" src="static/img/icon-userMenu.png">
@@ -61,7 +61,7 @@
                                     accept="image/*">
                             </span>
                         </label>
-                        <input type="text" class="form-control" readonly="">
+                          <input type="text" class="form-control" readonly="">
                     </div>
                 </form>
             </div>
@@ -79,13 +79,6 @@
             $('input[type=file]').change(function () {
                 var file = $(this).prop('files')[0];
 
-                // 画像以外は処理を停止
-                if (!file.type.match('image.*')) {
-                    // クリア
-                    $(this).val('');
-                    $('span').html('');
-                    return;
-                }
 
                 // 画像表示
                 var uploadImage = new Image();
