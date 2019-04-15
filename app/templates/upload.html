@@ -113,7 +113,7 @@
                         var preview = document.getElementById('preview')
                         console.log({preview:preview})
                         console.log({img:img})
-                        preview.innerHTML = img[0]
+                        preview.innerHTML = jQuery('<div>').html(img[0]);
                     }
 
 
