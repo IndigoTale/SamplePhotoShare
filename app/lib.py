@@ -206,8 +206,8 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
         return False
     else:
         pass
-    if res.get('Item').get('photoCount'):
-        photo_count = str(int(res.get('Item').get('photoCount')) + 1)
+    if res.get('Item').get('photoNumber'):
+        photo_number = str(int(res.get('Item').get('photoNumber')) + 1)
     else:
         return False
     try:
@@ -215,9 +215,9 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
             Key={
                 "tableName":"photoTable"
             },
-            UpdateExpression="set photoCount = :p",
+            UpdateExpression="set photoNumber = :p",
             ExpressionAttributeValues={
-                ":p":photo_count
+                ":p":photo_number
             }
         )
     except ClientError as e:
@@ -243,7 +243,7 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
         return False
     else:
         pass
-        
+
     return True
 
     
