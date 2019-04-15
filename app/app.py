@@ -101,10 +101,10 @@ def upload():
         comment = request.form.get('upload-comment')
         img_file = request.files.get('upload-file')
         if img_file and allowed_file(img_file.filename):
-            filename = f"{uuid.uuid4().hex}.{img_file.filename.split('.')[1]}"            
-            if lib.upload_photo_to_s3(img_file,filename) and \
-                lib.upload_photo_info_to_dynamodb(filename,title,comment,user_id,username):
-                    return redirect(request.url)
+            filename = f"{uuid.uuid4().hex}.{img_file.filename.split('.')[1]}"
+            if lib.upload_photo_to_s3(img_file, filename) and \
+                    lib.upload_photo_info_to_dynamodb(filename, title, comment, user_id, username):
+                return redirect("https://photoshare.tk")
 
     return redirect('https://photoshare.tk')
 
