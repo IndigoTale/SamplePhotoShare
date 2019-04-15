@@ -75,13 +75,16 @@
     </div>
     <script>
         $(function () {
-            var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.parent().parent().next(':text').val(label);
-            console.log({input:input,label:label});
+            
+ 
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
+                var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.parent().parent().next(':text').val(label);
+                console.log({input:input,label:label});
+
                 var file = $(this).prop('files')[0];
                 // 画像以外は処理を停止
                 if (!file.type.match('image.*')) {
