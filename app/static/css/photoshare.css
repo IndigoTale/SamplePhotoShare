@@ -320,14 +320,11 @@ article .title span {
     border-radius: 5px 0px 0px 5px;
     padding-left: 10px;
 }
-.titleForm.inputArea{
-    border-radius: 0px 5px 5px 0px;
-}
+
 .descriptionForm label{
     border-radius: 5px 0px 0px 5px;
     padding-left: 10px;
 }
-.descriptionForm.inputArea{
+.inputArea{
     border-radius: 0px 5px 5px 0px;
-    height: 100px;
 }
