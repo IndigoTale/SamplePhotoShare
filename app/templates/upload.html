@@ -83,7 +83,7 @@
                 if (!file.type.match('image.*')) {
                     return;
                 }
-                $('input[type=text class=form-control]').val = 'xxxx';
+                $(this).parent().parent().parent().find('input[type=text]').val = 'xxxx';
                 
                 // 画像表示
                 var uploadImage = new Image();
