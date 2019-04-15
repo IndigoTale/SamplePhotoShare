@@ -86,20 +86,20 @@
                     uploadImage.onload = function(){
                         var uploadForm = document.getElementById('upload-form')
                         var formWidth = uploadForm.clientWidth;
-                        var imageHeight = uploadImage.naturalWidth;
+                        var imageHeight = uploadImage.naturalHeight;
                         var imageWidth = uploadImage.naturalWidth;
                         var resizeWidth = formWidth;
                         var resizeHeight = resizeWidth * (imageHeight/imageWidth);
                         console.log({imageHeight:imageHeight,imageWidth:imageWidth})
                         console.log({resizeHeight:resizeHeight,resizeWidth:resizeWidth}) 
-                        var img_src = $('<img>').attr({
-                            src: uploadImage,
-                            height: resizeHeight,
-                            width: resizeWidth,
-                        });
-                        $('span').html(img_src);  
+
                     }
-                    
+                    var img_src = $('<img>').attr({
+                        src: uploadImage.src,
+                        height: resizeHeight,
+                        width: resizeWidth,
+                    });
+                    $('span').html(img_src);  
                 
 
                     
