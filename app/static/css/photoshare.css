@@ -301,13 +301,19 @@ article .title span {
     margin-left: auto;
 }
 .previewFrame {
+    position: relative;
     width: 100%;
     height: 300px;
     border: 1px dotted #999;
     padding-left:auto;
     padding-right:auto; 
+    
 }
 .previewFrame img{
     max-height: 298px;
-    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%); 
 }
