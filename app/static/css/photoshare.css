@@ -277,5 +277,8 @@ article .title span {
     display: inline-block;
 }
 .uploadForm {
-    margin: 1em auto 1em auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color:white;
+    height:200px;
 }
