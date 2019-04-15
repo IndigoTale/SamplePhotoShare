@@ -111,11 +111,11 @@
                         var img = $('<img>').attr({
                             src: uploadImage.src,
                             height: resizeHeight,
-                            width: resizeWidth,
-                            class:'squreContent'
+                            width: resizeWidth
                         });
 
                         var preview = document.getElementById('preview')
+                        $(preview).find('<a><span></span></a>')
                         console.log({ preview: preview })
                         console.log({ img: img })
                         preview.innerHTML = jQuery('<div>').append(img[0]).html();
