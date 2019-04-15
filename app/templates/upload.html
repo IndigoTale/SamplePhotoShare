@@ -81,11 +81,15 @@
                 // 画像表示
                 var reader = new FileReader();
                 reader.onload = function () {
-                    
-                
-                    
+                    var uploadImage = reader.result
+                    var uploadForm = document.getElementById('upload-form')
+                    var formWidth = uploadForm.clientWidth;
+                    var imageHeight = uploadImage.naturalHeight;
+                    var imageWidth = uploadImage.naturalWidth;
+                    var resizeHeight = uploadImage
+                    console.log(imageHeight,imageWidth)                   
                     var img_src = $('<img>').attr({
-                        src: reader.result,
+                        src: uploadImage,
                         height: '500',
                         width: '500',
                     });
