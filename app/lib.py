@@ -15,7 +15,7 @@ ALLOWED_EXTENSIONS = ('png', 'jpg', 'jpeg')
 # Flask App (Docker Container On EC2) からアクセスするのでセッションが必要
 with open("/app/aws_session_info.json", "r") as f:
     aws_session_info = json.load(f)
-if aws_session_info:
+if aws_session_info is None:
     exit(1)
 aws_session = boto3.Session(
     aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
