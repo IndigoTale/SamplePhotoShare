@@ -318,12 +318,12 @@ article .title span {
     border-radius: 5px 0px 0px 5px;
 }
 .titleForm span{
-    padding: auto;
+    padding-left: 1em;
 }
 
 .descriptionForm label{
     border-radius: 5px 0px 0px 5px;
 }
 .descriptionForm span{
-    padding: auto;
+    padding-left: 1em;
 }
