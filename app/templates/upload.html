@@ -84,9 +84,11 @@
                     
                 
                     
-                    var img_src = $('<img>').attr('src', reader.result);
-                    img_src = $('<img>').attr('height', '500');
-                    img_src = $('<img>').attr('width', '500');
+                    var img_src = $('<img>').attr({
+                        src: reader.result,
+                        height: '500',
+                        width: '500',
+                    });
                     $('span').html(img_src);
 
                 }
