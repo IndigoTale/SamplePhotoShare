@@ -96,7 +96,7 @@ def upload():
     else:
         return redirect("https://photoshare.tk/login")
     # フォームが揃っているか
-    if request.form.get('upload-title') and request.form.get('upload-comment') and request.file.get('upload-file'):
+    if request.form.get('upload-title') and request.form.get('upload-comment') and request.files.get('upload-file'):
         title = request.form.get('upload-title')
         comment = request.form.get('upload-comment')
         img_file = request.files.get('upload-file')
