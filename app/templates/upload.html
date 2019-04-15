@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-8">
                 <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
-                    
+                    <span></span>
                     <div class="input-group">
                         <label class='input-group-btn'>
                             <span class="btn btn-dark">
@@ -108,7 +108,8 @@
                             height: resizeHeight,
                             width: resizeWidth,
                         });
-                        $(this).parent().parent().parent().html(img_src);
+                        $('span').parent().parent().parent('span').html(img_src);
+                        console.log($('span'.parent().parent().parent()));
                     }
 
 
