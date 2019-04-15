@@ -82,8 +82,7 @@
                 var reader = new FileReader();
                 reader.onload = function () {
                     
-                    var resize_height = reader.result.height;
-                    var resize_width = reader.result.width;
+                
                     
                     var img_src = $('<img>').attr('src', reader.result);
                     img_src = $('<img>').attr('height', '500');
