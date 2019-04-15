@@ -288,11 +288,11 @@ article .title span {
 
 .squareFrame{
     border: 1px dotted #999;
-    max-height: 400px;
+    width: 100%;
+    max-height: 100%;
 }
 .squareContent {
     display: block;
-    height: auto;
     width: 100%;
-    max-height: 400px;
+    padding-bottom:100%;
 }
