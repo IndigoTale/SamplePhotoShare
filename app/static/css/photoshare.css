@@ -31,7 +31,8 @@ a:hover{
 }
 .dropdown-menu p{
     color:white;
-    padding-left: 0rem 1.5rem;
+    padding: 0rem 1.5rem;
+    margin-bottom: 0px;
 }
 
 /* 
