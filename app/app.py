@@ -52,7 +52,7 @@ def logout():
 
 
 @app.route('/signup', methods=["GET"])
-def signupForm():
+def signup_form():
     return render_template("signup.html", code=0)
 
 
@@ -70,6 +70,12 @@ def signup():
 @app.route('/upload',methods=['GET'])
 def upload_form():
     return render_template('upload.html')
+@app.route('/upload',methods=['POST'])
+def upload():
+    if request.form.get('file'):
+
+        return request.form['file']
+    return "Fail"
 
 
 if __name__ == '__main__':
