@@ -72,9 +72,8 @@ def upload_form():
     return render_template('upload.html')
 @app.route('/upload',methods=['POST'])
 def upload():
-    if request.form.get('file'):
-
-        return request.form['file']
+    if request.form.get('upload-comment'):
+        return request.form.get('upload-comment')
     return "Fail"
 
 
