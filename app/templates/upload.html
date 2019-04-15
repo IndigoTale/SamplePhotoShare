@@ -53,7 +53,9 @@
         <div class="row">
             <div class="col-md-8">
                 <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
-                    <span></span>
+                    <div id='preview'>
+
+                    </div>
                     <div class="input-group">
                         <label class='input-group-btn'>
                             <span class="btn btn-dark">
@@ -110,7 +112,7 @@
                             height: resizeHeight,
                             width: resizeWidth,
                         });
-                        $('span').parent().parent().parent('span').html(img_src);
+                        getElementById('preview').html(img_src);
                         
                     }
 
