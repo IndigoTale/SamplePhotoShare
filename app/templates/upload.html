@@ -51,9 +51,9 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-1">
+            <div class="col-md-8 offset-md-2">
                 <form class="uploadForm" id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
-                    
+
                     <div class="input-group">
                         <label class='input-group-btn'>
                             <span class="btn btn-dark">
@@ -75,23 +75,23 @@
     </div>
     <script>
         $(function () {
-            
- 
+
+
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
                 var input = $(this),
-                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
                 input.parent().parent().next(':text').val(label);
-                console.log({input:input,label:label});
+                console.log({ input: input, label: label });
 
                 var file = $(this).prop('files')[0];
                 // 画像以外は処理を停止
                 if (!file.type.match('image.*')) {
                     return;
                 }
-             
-                
+
+
                 // 画像表示
                 var uploadImage = new Image();
                 var reader = new FileReader();
@@ -111,25 +111,14 @@
                             height: resizeHeight,
                             width: resizeWidth
                         });
-                        
+
                         var preview = document.getElementById('preview')
-                        console.log({preview:preview})
-                        console.log({img:img})
+                        console.log({ preview: preview })
+                        console.log({ img: img })
                         preview.innerHTML = jQuery('<div>').append(img[0]).html();
                     }
-
-
-
-
-
-
-
-
-
-
                 }
                 reader.readAsDataURL(file);
-            
             });
         });
     </script>

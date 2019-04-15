@@ -281,6 +281,7 @@ article .title span {
     margin-bottom: 1e;
 
     color:white;
-    height:200px;
+    height:500px;
     background-color: rgb(50, 50, 50);
+    border-radius: 10px 10px 10px 10px;
 }
