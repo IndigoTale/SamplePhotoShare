@@ -187,8 +187,8 @@ def uploadPhoto(user_id, username):
 def upload_photo_to_s3(file, filename):
 
     try:
-        photoBucket.upload_fileobj(file,PHOTO_FOLDER+filename,ExtraArgs={'ACL':'public-read'})
-    except:
+        photoBucket.upload_fileobj(file,PHOTO_FOLDER+filename,ExtraArgs={"ContentType":f"image/{filename.split('.')[1]}",'ACL':'public-read'})
+    except boto3.exceptions.S3UploadFailedError:
         return False
     else:
         return True
