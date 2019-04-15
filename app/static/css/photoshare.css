@@ -284,15 +284,14 @@ article .title span {
     height:500px;
     border-radius: 10px 10px 10px 10px;
 }
-.uploadForm.spacer{
-    width:100%;
-    padding-bottom: 100%;
+
+
+.squareFrame{
+    border: 1px dotted #999;
 }
-.uploadForm img {
-    position:absolute;
-    top: 0;
-    bottom:0;
-    right:0;
-    left:0;
-    background-color: #FFF;
+.squareContent {
+    display: block;
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
 }

@@ -64,7 +64,9 @@
                         </label>
                         <input type="text" class="form-control" readonly="">
                     </div>
-                    <div id='preview' class='spacer'></div>
+                    <div id='preview' class='squareFrame'>
+                        <a href="#"><span class="squareContent"></span></a>
+                    </div>
                 </form>
             </div>
 
@@ -109,7 +111,8 @@
                         var img = $('<img>').attr({
                             src: uploadImage.src,
                             height: resizeHeight,
-                            width: resizeWidth
+                            width: resizeWidth,
+                            class:'squreContent'
                         });
 
                         var preview = document.getElementById('preview')
