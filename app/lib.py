@@ -15,21 +15,20 @@ ALLOWED_EXTENSIONS = ('png', 'jpg', 'jpeg')
 # Flask App (Docker Container On EC2) からアクセスするのでセッションが必要
 with open("/app/aws_session_info.json", "r") as f:
     aws_session_info = json.load(f)
+if aws_session_info:
+    exit(1)
 aws_session = boto3.Session(
     aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
     aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
     region_name=aws_session_info["REGION_NAME"]
 )
 # S3の情報
-with open("/app/aws_s3_info.json", "r") as fi:
-    aws_s3_info = json.load(fi)
-
+BUCKET_NAME = 'photoshare-bucket'
+PHOTO_FOLDER = "images/photo/"
+PROFILE_ICON_FOLDER = "images/profile-icon/"
 # S3操作用クラス
-photoBucket = aws_session.resource('s3').Bucket(aws_s3_info["BUCKET_NAME"])
+photoBucket = aws_session.resource('s3').Bucket(BUCKET_NAME)
 
-
-if aws_session_info and aws_s3_info:
-    exit(1)
 
 # DynamoDBのテーブル操作用クラス
 userIdTable = aws_session.resource('dynamodb').Table('userIdTable')
@@ -188,14 +187,14 @@ def uploadPhoto(user_id, username):
 def upload_photo_to_s3(file, filename):
 
     try:
-        photoBucket.upload_fileobj(file, aws_s3_info['PHOTO_FOLDER']+filename)
+        photoBucket.upload_fileobj(file,PHOTO_FOLDER+filename)
     except:
         return False
     else:
         return True
 
 
-def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
+def upload_photo_info_to_dynamodb(filename, title, comment, user_id, username):
     try:
         res = infoTable.get_item(
             Key={
@@ -214,11 +213,11 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
     try:
         infoTable.update_item(
             Key={
-                "tableName":"photoTable"
+                "tableName": "photoTable"
             },
             UpdateExpression="set photoNumber = :p",
             ExpressionAttributeValues={
-                ":p":photo_number
+                ":p": photo_number
             }
         )
     except ClientError as e:
@@ -230,7 +229,7 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
         upload_date = datetime.now(JST)
         photoTable.put_item(
             Item={
-                "photoCount":photo_number,
+                "photoCount": photo_number,
                 "userId": user_id,
                 "userName": username,
                 "uploadDate": upload_date.strftime('%Y-%m-%d %H:%M:%S'),
@@ -247,7 +246,6 @@ def upload_photo_info_to_dynamodb(filename, title, comment,user_id,username):
 
     return True
 
-    
 
 def updatePhoto(photo_id, user_id):
     try:
