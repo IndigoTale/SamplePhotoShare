@@ -278,7 +278,9 @@ article .title span {
 }
 .uploadForm {
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 1e;
+
     color:white;
     height:200px;
+    background-color: rgb(50, 50, 50);
 }
