@@ -305,3 +305,6 @@ article .title span {
     height: 300px;
     border: 1px dotted #999;
 }
+.previewFrame img{
+    max-height: 298px;
+}
