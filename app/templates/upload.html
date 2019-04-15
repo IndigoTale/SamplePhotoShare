@@ -80,7 +80,8 @@
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
                 var file = $(this).prop('files')[0];
-
+                console.log({this:$(this),parent1:$(this).parent()});
+                
                 // 画像以外は処理を停止
                 if (!file.type.match('image.*')) {
                     // クリア
@@ -88,7 +89,7 @@
 
                     return;
                 }
-                
+               
                 // 画像表示
                 var uploadImage = new Image();
                 var reader = new FileReader();
@@ -122,7 +123,7 @@
 
                 }
                 reader.readAsDataURL(file);
-            console.log($(this),$(this).parent());
+            
             });
         });
     </script>
