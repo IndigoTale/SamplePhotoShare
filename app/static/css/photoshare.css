@@ -282,7 +282,6 @@ article .title span {
 
     color:white;
     height:500px;
-    border-radius: 10px 10px 10px 10px;
 }
 
 
@@ -316,4 +315,16 @@ article .title span {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     -webkit-transform: translateY(-50%) translateX(-50%); 
+}
+.titleForm label{
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 1em;
+}
+.titleForm {
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 1em;
+}
+.descriptionForm label{
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 1em;
 }
