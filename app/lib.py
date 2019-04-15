@@ -187,7 +187,7 @@ def uploadPhoto(user_id, username):
 def upload_photo_to_s3(file, filename):
 
     try:
-        photoBucket.upload_fileobj(file,PHOTO_FOLDER+filename)
+        photoBucket.upload_fileobj(file,PHOTO_FOLDER+filename,ExtraArgs={'ACL':'public-read'})
     except:
         return False
     else:
@@ -229,9 +229,11 @@ def upload_photo_info_to_dynamodb(filename, title, comment, user_id, username):
         upload_date = datetime.now(JST)
         photoTable.put_item(
             Item={
-                "photoCount": photo_number,
+                "photoNumber": photo_number,
                 "userId": user_id,
                 "userName": username,
+                "title":title,
+                "self-comment":comment,
                 "uploadDate": upload_date.strftime('%Y-%m-%d %H:%M:%S'),
                 "uploadYear": upload_date.strftime('%Y'),
                 "uploadMonth": upload_date.strftime('%m'),
