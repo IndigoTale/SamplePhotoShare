@@ -81,6 +81,10 @@
                             </textarea>
                         </div>
                     </div>
+                    <div class="text-center" style="padding: 30px;">
+                        <button type="button" class="btn btn-dark">Submit<span
+                                class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
                 </form>
             </div>
 
@@ -114,54 +118,12 @@
                 reader.onloadend = function () {
                     uploadImage.src = reader.result;
                     uploadImage.onload = function () {
-                        var imageHeight = uploadImage.naturalHeight;
-                        var imageWidth = uploadImage.naturalWidth;
-
                         var preview = document.getElementById('preview')
-
-
-                        var previewHeight = preview.clientHeight;
-                        var previewWidth = preview.clientWidth;
-
-                        if (previewHeight == previewWidth) {
-                            if (imageHeight <= imageWidth) {
-                                var resizeWidth = previewWidth;
-                                var resizeHeight = previewWidth * (imageHeight / imageWidth);
-                            }
-                            if (imageHeight > imageWidth) {
-                                var resizeWidth = previewHeight * (imageWidth / imageHeight);
-                                var resizeHeight = previewHeight;
-                            }
-                        }
-                        else {
-                            if (imageHeight == imageWidth) {
-                                var resizeWidth = previewHeight;
-                                var resizeHeight = previewHeight;
-                            }
-                            if (imageHeight > imageWidth) {
-                                var resizeWidth = previewHeight * (imageWidth / imageHeight);
-                                var resizeHeight = previewHeight;
-                            }
-                            if (imageHeight < imageWidth) {
-                                if (imageHeight / imageWidth > previewHeight / previewWidth) {
-                                    var resizeWidth = previewHeight * (imageWidth / imageHeight);
-                                    var resizeHeight = previewHeight;
-                                }
-                                else {
-                                    var resizeWidth = previewWidth;
-                                    var resizeHeight = previewWidth * (imageHeight / imageWidth);
-                                }
-                            }
-                        }
-                        console.log({ imageHeight: imageHeight, imageWidth: imageWidth })
-                        console.log({ resizeHeight: resizeHeight, resizeWidth: resizeWidth })
                         var img = $('<img>').attr({
                             src: uploadImage.src,
                             class: 'img-fluid',
                             style: 'margin:0 auto;'
                         });
-
-
                         console.log({ preview: preview })
                         console.log({ img: img })
                         var content = preview
