@@ -300,3 +300,7 @@ article .title span {
     margin-right: auto;
     margin-left: auto;
 }
+.previewFrame {
+    width: 100%;
+    height: 300px;
+}
