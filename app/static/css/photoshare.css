@@ -282,6 +282,17 @@ article .title span {
 
     color:white;
     height:500px;
-    background-color: rgb(50, 50, 50);
     border-radius: 10px 10px 10px 10px;
+}
+.uploadForm.spacer{
+    width:100%;
+    padding-bottom: 100%;
+}
+.uploadForm img {
+    position:absolute;
+    top: 0;
+    bottom:0;
+    right:0;
+    left:0;
+    background-color: #FFF;
 }
