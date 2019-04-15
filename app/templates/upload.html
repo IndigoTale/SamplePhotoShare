@@ -52,7 +52,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form id = "upload-form" action="" method="post" enctype="multipart/form-data">
                     <input type="file" name="userfile" accept="image/*">
                 </form>
             </div>
@@ -63,30 +63,34 @@
         &copy; 2019 Photo Share. All Rights Reserved.
     </div>
     <script>
-        $(function() {
+        $(function () {
             $('input[type=file]').after('<span></span>');
-          
+
             // アップロードするファイルを選択
-            $('input[type=file]').change(function() {
-              var file = $(this).prop('files')[0];
-          
-              // 画像以外は処理を停止
-              if (! file.type.match('image.*')) {
-                // クリア
-                $(this).val('');
-                $('span').html('');
-                return;
-              }
-          
-              // 画像表示
-              var reader = new FileReader();
-              reader.onload = function() {
-                var img_src = $('<img>').attr('src', reader.result);
-                $('span').html(img_src);
-              }
-              reader.readAsDataURL(file);
+            $('input[type=file]').change(function () {
+                var file = $(this).prop('files')[0];
+
+                // 画像以外は処理を停止
+                if (!file.type.match('image.*')) {
+                    // クリア
+                    $(this).val('');
+                    $('span').html('');
+                    return;
+                }
+
+                // 画像表示
+                var reader = new FileReader();
+                reader.onload = function () {
+                    
+                    var resize_height = reader.result;
+                    var resize_width = 0;
+
+                    var img_src = $('<img>').attr('src', reader.result);
+                    $('span').html(img_src);
+                }
+                reader.readAsDataURL(file);
             });
-          });
+        });
     </script>
 </body>
 
