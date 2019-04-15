@@ -101,12 +101,45 @@
                 reader.onloadend = function () {
                     uploadImage.src = reader.result;
                     uploadImage.onload = function () {
-                        var uploadForm = document.getElementById('upload-form')
-                        var formWidth = uploadForm.clientWidth;
                         var imageHeight = uploadImage.naturalHeight;
                         var imageWidth = uploadImage.naturalWidth;
-                        var resizeWidth = formWidth;
-                        var resizeHeight = resizeWidth * (imageHeight / imageWidth);
+                        
+                        var preview = document.getElementById('preview')
+                       
+
+                        var previewHeight = preview.clientHeight;
+                        var previewWidth = preview.clientWidth;
+                        
+                        if (previewHeight == previewWidth){
+                            if (imageHeight <= imageWidth) {
+                                var resizeWidth = previewWidth;
+                                var resizeHeight = previewWidth*(imageHeight/imageWidth);
+                            }
+                            if (imageHeight > imageWidth){
+                                var resizeWidth = previewHeight*(imageWidth/imageHeight); 
+                                var resizeHeight = previewHeight;
+                            }
+                        } 
+                        else{
+                            if (imageHeight == imageWidth) {
+                                var resizeWidth = previeHeight;
+                                var resizeHeight = previeHeight;
+                            }
+                            if (imageHeight > imageWidth){
+                                var resizeWidth = previewHeight*(imageWidth/imageHeight); 
+                                var resizeHeight = previewHeight;
+                            }
+                            if (imageHeight < imageWidth){
+                                if(imageHeight/imageWidth > previewHeight/previewWidth){
+                                    var resizeWidth = previewHeight*(imageWidth/imageHeight); 
+                                    var resizeHeight = previewHeight;
+                                }
+                                else{
+                                    var resizeWidth = previewWidth;
+                                    var resizeHeight = previewWidth*(imageHeight/imageWidth);
+                                }
+                            }
+                        }
                         console.log({ imageHeight: imageHeight, imageWidth: imageWidth })
                         console.log({ resizeHeight: resizeHeight, resizeWidth: resizeWidth })
                         var img = $('<img>').attr({
@@ -115,10 +148,10 @@
                             width: resizeWidth
                         });
 
-                        var preview = document.getElementById('preview')
-                        var content = preview.children[0].children[0]
+                
                         console.log({ preview: preview })
                         console.log({ img: img })
+                        var content = preview.children[0].children[0]
                         content.innerHTML = jQuery('<div>').append(img[0]).html();
                     }
                 }

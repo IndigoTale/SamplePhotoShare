@@ -296,3 +296,7 @@ article .title span {
     width: 100%;
     padding-bottom:100%;
 }
+.squareContent img{
+    margin-right: auto;
+    margin-left: auto;
+}
