@@ -53,15 +53,7 @@
         <div class="row">
             <div class="col-md-8">
                 <form action="" method="post" enctype="multipart/form-data">
-                    <img class="imagePreview">
-                    <div class="input-group">
-                        <label class="input-group-btn">
-                            <span class="btn btn-primary">
-                                Choose File<input type="file" style="display:none" class="uploadFile">
-                            </span>
-                        </label>
-                        <input type="text" class="form-control" readonly="">
-                    </div>
+                    <input type="file" name="userfile" accept="image/*">
                 </form>
             </div>
 
@@ -71,24 +63,30 @@
         &copy; 2019 Photo Share. All Rights Reserved.
     </div>
     <script>
-        $(document).on('change', ':file', function () {
-            var input = $(this),
-                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.parent().parent().next(':text').val(label);
-
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-            if (/^image/.test(files[0].type)) { // only image file
-                var reader = new FileReader(); // instance of the FileReader
-                reader.readAsDataURL(files[0]); // read the local file
-                reader.onloadend = function () { // set image data as background of div
-                    
-                    input.parent().parent().parent().prev('.imagePreview').src=this.result;
-                    
-                }
-            }
-        });
+        $(function() {
+            $('input[type=file]').after('<span></span>');
+          
+            // アップロードするファイルを選択
+            $('input[type=file]').change(function() {
+              var file = $(this).prop('files')[0];
+          
+              // 画像以外は処理を停止
+              if (! file.type.match('image.*')) {
+                // クリア
+                $(this).val('');
+                $('span').html('');
+                return;
+              }
+          
+              // 画像表示
+              var reader = new FileReader();
+              reader.onload = function() {
+                var img_src = $('<img>').attr('src', reader.result);
+                $('span').html(img_src);
+              }
+              reader.readAsDataURL(file);
+            });
+          });
     </script>
 </body>
 
