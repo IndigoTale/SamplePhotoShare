@@ -79,7 +79,6 @@
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
                 var file = $(this).prop('files')[0];
-                v
                 console.log({this:$(this),parent1:$(this).parent()});
                 console.log({parent2:$(this).parent().parent(),parent3:$(this).parent().parent().parent()});
                 console.log({parent4Span:$(this).parent().parent().parent().parent().find('span')});
