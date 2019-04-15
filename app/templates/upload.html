@@ -92,6 +92,12 @@
                         var resizeHeight = resizeWidth * (imageHeight/imageWidth);
                         console.log({imageHeight:imageHeight,imageWidth:imageWidth})
                         console.log({resizeHeight:resizeHeight,resizeWidth:resizeWidth}) 
+                        var img_src = $('<img>').attr({
+                            src: uploadImage,
+                            height: resizeHeight,
+                            width: resizeWidth,
+                        });
+                        $('span').html(img_src);  
                     }
                     
                 
@@ -99,12 +105,8 @@
                     
                  
                              
-                    var img_src = $('<img>').attr({
-                        src: uploadImage,
-                        height: '500',
-                        width: '',
-                    });
-                    $('span').html(img_src);
+            
+                    
 
                 }
                 reader.readAsDataURL(file);
