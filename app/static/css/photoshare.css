@@ -276,3 +276,6 @@ article .title span {
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 }
+.uploadForm {
+    margin: auto 1em auto 1em;
+}
