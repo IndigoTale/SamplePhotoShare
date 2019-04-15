@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-8">
                 <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
-                    <div id='preview'></div>
+                    
                     <div class="input-group">
                         <label class='input-group-btn'>
                             <span class="btn btn-dark">
@@ -64,7 +64,7 @@
                         </label>
                         <input type="text" class="form-control" readonly="">
                     </div>
-                    
+                    <div id='preview'></div>
                 </form>
             </div>
 
@@ -75,8 +75,7 @@
     </div>
     <script>
         $(function () {
-            $('input[type=file]').parent().parent().parent().parent().after('<span></span>');
-
+         
             // アップロードするファイルを選択
             $('input[type=file]').change(function () {
                 var file = $(this).prop('files')[0];
@@ -111,10 +110,12 @@
                             height: resizeHeight,
                             width: resizeWidth,
                         });
-                        console.log({})
+                        
                         var preview = document.getElementById('preview').html
-                        preview.innerHTML =    
+                        console.log({preview:preview})
+                        console.log({img:img})
                     }
+
 
 
 
