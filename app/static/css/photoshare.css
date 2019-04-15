@@ -317,14 +317,17 @@ article .title span {
     -webkit-transform: translateY(-50%) translateX(-50%); 
 }
 .titleForm label{
-    border-radius: 10px 0px 0px 10px;
-    padding-left: 1em;
+    border-radius: 5px 0px 0px 5px;
+    margin-left: 1em;
 }
-.titleForm {
-    border-radius: 10px 0px 0px 10px;
-    padding-left: 1em;
+.titleForm.col-md-10{
+    border-radius: 0px 5px 5px 0px;
 }
 .descriptionForm label{
-    border-radius: 10px 0px 0px 10px;
-    padding-left: 1em;
+    border-radius: 5px 0px 0px 5px;
+    margin-left: 1em;
+}
+.descriptionForm.col-md-10{
+    border-radius: 0px 5px 5px 0px;
+    height: 100px;
 }
