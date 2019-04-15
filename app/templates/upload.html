@@ -77,21 +77,32 @@
                     $('span').html('');
                     return;
                 }
-
+                
                 // 画像表示
+                var uploadImage = new Image();
                 var reader = new FileReader();
-                reader.onload = function () {
-                    var uploadImage = reader.result
-                    var uploadForm = document.getElementById('upload-form')
-                    var formWidth = uploadForm.clientWidth;
-                    var imageHeight = uploadImage.naturalHeight;
-                    var imageWidth = uploadImage.naturalWidth;
-                    var resizeHeight = uploadImage
-                    console.log(imageHeight,imageWidth,formWidth)                   
+                reader.onloadend = function () {
+                    uploadImage.src = reader.result;
+                    uploadImage.onload = function(){
+                        var uploadForm = document.getElementById('upload-form')
+                        var formWidth = uploadForm.clientWidth;
+                        var imageHeight = uploadImage.naturalWidth;
+                        var imageWidth = uploadImage.naturalWidth;
+                        var resizeWidth = formWidth;
+                        var resizeHeight = resizeWidth * (imageHeight/imageWidth);
+                        console.log({imageHeight:imageHeight,imageWidth:imageWidth})
+                        console.log({resizeHeight:resizeHeight,resizeWidth:resizeWidth}) 
+                    }
+                    
+                
+
+                    
+                 
+                             
                     var img_src = $('<img>').attr({
                         src: uploadImage,
                         height: '500',
-                        width: '500',
+                        width: '',
                     });
                     $('span').html(img_src);
 
