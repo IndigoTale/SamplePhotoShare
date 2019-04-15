@@ -1,7 +1,6 @@
 body {
     background-color: rgb(20,20,20);
     color: white;
-    font-family: fantasy;
 }
 a {
     color: white;
@@ -176,7 +175,6 @@ article .title span {
     justify-content: center;
     align-items: center;
     font-size: 160%;
-    font-family: bolder
 }
 
 .filter a:before {
