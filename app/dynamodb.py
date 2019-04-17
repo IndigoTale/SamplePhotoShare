@@ -328,7 +328,7 @@ class photoTimeSeriesTable:
             print(e.response['Error']['Message'])
             return {"status":400}
         else:
-            return {"status":200}
+            return {"status":201}
         
     def delete(self,created_at):
         try:
