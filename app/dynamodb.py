@@ -346,12 +346,13 @@ class photoTimeSeriesTable:
                 return {"status":404} 
     
     def query(self,KeyConditionExpression,**kwargs):
-        if kwargs.get('Limit') and kwargs.get('FilterExpression'):
+        if kwargs.get('Limit') and kwargs.get('FilterExpression') and kwargs.get("ScanIndexForward"):
             try:
                 records = self.photoTimeSeriesTable.query(
                     KeyConditionExpression = KeyConditionExpression,
                     FilterExpression=kwargs.get('FilterExpression'),
-                    Limit = kwargs.get('Limit')
+                    Limit = kwargs.get('Limit'),
+                    ScanIndexForward= kwargs.get("ScanIndexForward")
                 )
             except  ClientError as e:
                 print(e.response['Error']['Message'])
@@ -359,6 +360,54 @@ class photoTimeSeriesTable:
             else:
                 pass
         
+        elif kwargs.get('Limit') and kwargs.get('FilterExpression') :
+            try:
+                records = self.photoTimeSeriesTable.query(
+                    KeyConditionExpression = KeyConditionExpression,
+                    FilterExpression=kwargs.get('FilterExpression'),
+                    Limit = kwargs.get('Limit'),
+                )
+            except  ClientError as e:
+                print(e.response['Error']['Message'])
+                return {"status":400}
+            else:
+                pass
+        elif kwargs.get('Limit') and kwargs.get("ScanIndexForward"):
+            try:
+                records = self.photoTimeSeriesTable.query(
+                    KeyConditionExpression = KeyConditionExpression,
+                    Limit = kwargs.get('Limit'),
+                    ScanIndexForward= kwargs.get("ScanIndexForward")
+                )
+            except  ClientError as e:
+                print(e.response['Error']['Message'])
+                return {"status":400}
+            else:
+                pass
+        elif kwargs.get('FilterExpression') and kwargs.get("ScanIndexForward"):
+            try:
+                records = self.photoTimeSeriesTable.query(
+                    KeyConditionExpression = KeyConditionExpression,
+                    FilterExpression=kwargs.get('FilterExpression'),
+                    ScanIndexForward= kwargs.get("ScanIndexForward")
+                )
+            except  ClientError as e:
+                print(e.response['Error']['Message'])
+                return {"status":400}
+            else:
+                pass
+
+        elif kwargs.get('Limit'):
+            try:
+                records = self.photoTimeSeriesTable.query(
+                    KeyConditionExpression = KeyConditionExpression,
+                    Limit = kwargs.get('Limit')
+                )
+            except  ClientError as e:
+                print(e.response['Error']['Message'])
+                return {"status":400}
+            else:
+                pass
         elif kwargs.get('FilterExpression'):
             try:
                 records = self.photoTimeSeriesTable.query(
@@ -370,11 +419,11 @@ class photoTimeSeriesTable:
                 return {"status":400}
             else:
                 pass
-        elif kwargs.get('Limit'):
+        elif kwargs.get("ScanIndexForward"):
             try:
                 records = self.photoTimeSeriesTable.query(
                     KeyConditionExpression = KeyConditionExpression,
-                    Limit = kwargs.get('Limit')
+                    ScanIndexForward= kwargs.get("ScanIndexForward")
                 )
             except  ClientError as e:
                 print(e.response['Error']['Message'])
@@ -392,7 +441,7 @@ class photoTimeSeriesTable:
             else:
                 pass
         
-        if records.get("Item"):
+        if records.get("ItemsCondi"):
             return {"status":200,"records":records}
         else:
             return {"status":404,"records":records}    
