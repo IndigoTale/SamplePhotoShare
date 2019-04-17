@@ -14,4 +14,4 @@ def allowed_file(filename:str):
 # Get Time Stamp
 JST = timezone(timedelta(hours=+9), 'JST')
 def get_cuurent_timestamp():
-    return datetime.now(JST).strftime('%Y-%m-%d %H:%M:%S')
+    return datetime.now(JST).strftime('%Y-%m-%d %H:%M:%S.%f %Z')

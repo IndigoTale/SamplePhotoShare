@@ -176,6 +176,7 @@ def upload():
         flag["s3"] = True
 
     # photoTableにレコードを追加
+    now = datetime.now(JST)
     created_at = get_cuurent_timestamp()
 
     res = photoTable.put(photo_id, created_at, user_id,
@@ -195,7 +196,7 @@ def upload():
         if flag["photoTable"]:
             photoTable.delete(photo_id)
         if flag["photoTimeSeriesTable"]:
-            photoTimeSeriesTable.delete(created_at, photo_id)
+            photoTimeSeriesTable.delete(created_at)
         return render_template("upload.html", upload=False)
 
 

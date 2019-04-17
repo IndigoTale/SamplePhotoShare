@@ -330,15 +330,16 @@ class photoTimeSeriesTable:
         else:
             return {"status":200}
         
-    def delete(self,created_at,photo_id):
+    def delete(self,created_at):
         try:
             record = self.photoTimeSeriesTable.delete_item(
-                ConditionExpression=Key("dummy").eq("dummy") & Key("created_at").eq(created_at) & Attr("photo_id").eq(photo_id)
+                Key={'dummy':'dummy','created_at':created_at}
             )
         except  ClientError as e:
             print(e.response['Error']['Message'])
             return {"status":400}
         else:
+
             if record.get("Attributes"):
                 return {"status":200,"record":record}
             else:
