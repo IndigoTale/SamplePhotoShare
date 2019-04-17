@@ -56,6 +56,7 @@ class userIdTable:
                 return {"status":200,"record":record}
             else:
                 return {"status":404}
+                
     def delete(self,user_id):
         key = {"user_id":user_id}
         try:

@@ -95,12 +95,13 @@ def signup():
     else:
         return render_template('signup.html', format=False)
 
-    res_name = userNameTable.put(username, user_id)
-    if res_name.get("status") == 201:
-            flag["name"] = True
-    else:
-        return render_template('signup.html', name=False)
     
+    res_name = userNameTable.get(username)
+    if res_name.get("status") == 404:
+        res_name = userNameTable.put(username,user_id)
+        if res_name.get("status") == 201:
+            flag["name"] = True
+
     if flag["id"] and flag["name"]:
         return redirect(FQDN+"/login")
     else:
