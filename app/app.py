@@ -32,7 +32,7 @@ def index():
 
     photos = []
     print(res["Items"])
-    if res["resResponseMetadata"]["HTTPStatusCode"] == 200:
+    if res["ResponseMetadata"]["HTTPStatusCode"] == 200:
         for item in res["Items"]:
             res_in = photoTable.get(item["photo_id"])
             if res_in["status"] == 200:
