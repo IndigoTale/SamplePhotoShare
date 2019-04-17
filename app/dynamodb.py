@@ -306,8 +306,8 @@ class photoTable:
             print(e.response['Error']['Message'])
             return {"status":400}
         else:
-            if record.get("Attributes"):
-                return {"status":200,"record":record}
+            if record.get("ResponseMetadata").get("HTTPStatusCode")==200:
+                return {"status":200}
             else:
                 return {"status":404} 
 
