@@ -53,6 +53,8 @@ def login():
     res = userIdTable.login(user_id,password)
     if res.get("status") == 404:
         return render_template("login.html",user=False)
+    elif res.get("status") == 401:
+        return render_template("login.html",password=False)
     elif res.get("status") == 400:
         return render_template("login.html",format=False)
     else:
