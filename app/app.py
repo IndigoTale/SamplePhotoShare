@@ -23,24 +23,29 @@ photoTimeSeriesTable = photoTimeSeriesTable()
 @app.route('/')
 @app.route('/index/')
 def index():
-    res = photoTimeSeriesTable.query(Key("dummy").eq("dummy") & Key("created_at").lte(get_cuurent_timestamp()),Limit=2,ScanIndexForward=False)
+    res = photoTimeSeriesTable.photoTimeSeriesTable.query(
+        KeyConditionExpression=Key("dummy").eq("dummy") & Key(
+            "created_at").lte(get_cuurent_timestamp()),
+        Limit=20,
+        ScanIndexForward=False
+    )
+
     photos = []
-    print(res["records"])
-    if res["status"] == 200:
-        for item in res["records"]["Items"]:
+    print(res["Items"])
+    if res["resResponseMetadata"]["HTTPStatusCode"] == 200:
+        for item in res["Items"]:
             res_in = photoTable.get(item["photo_id"])
             if res_in["status"] == 200:
                 photos.append(res_in["record"]["Item"])
-    print(json.dumps(photos,indent=4))
+    print(json.dumps(photos, indent=4))
 
     if session.get('user_id') is None:
-        return render_template("index.html",photos=photos)
+        return render_template("index.html", photos=photos)
     res = userIdTable.get(session.get('user_id'))
     if res['status'] == 200:
-        return render_template('login-index.html', username=res["record"]["Item"]['username'],photos=photos)
+        return render_template('login-index.html', username=res["record"]["Item"]['username'], photos=photos)
     else:
-        return render_template("index.html",photos=photos)
-
+        return render_template("index.html", photos=photos)
 
 
 @app.route('/add_user')
@@ -56,17 +61,18 @@ def loginForm():
 @app.route('/login', methods=["POST"])
 def login():
     if request.form.get("email") and request.form.get("password"):
-        user_id, password = request.form.get("email"),request.form.get("password")
+        user_id, password = request.form.get(
+            "email"), request.form.get("password")
     else:
-        return render_template("login.html",form=False)
-     
-    res = userIdTable.login(user_id,password)
+        return render_template("login.html", form=False)
+
+    res = userIdTable.login(user_id, password)
     if res.get("status") == 404:
-        return render_template("login.html",user=False)
+        return render_template("login.html", user=False)
     elif res.get("status") == 401:
-        return render_template("login.html",password=False)
+        return render_template("login.html", password=False)
     elif res.get("status") == 400:
-        return render_template("login.html",format=False)
+        return render_template("login.html", format=False)
     else:
         session['user_id'] = user_id
         return redirect(FQDN)
@@ -109,10 +115,9 @@ def signup():
     else:
         return render_template('signup.html', format=False)
 
-    
     res_name = userNameTable.get(username)
     if res_name.get("status") == 404:
-        res_name = userNameTable.put(username,user_id)
+        res_name = userNameTable.put(username, user_id)
         if res_name.get("status") == 201:
             flag["name"] = True
 
@@ -123,8 +128,9 @@ def signup():
             userIdTable.delete(user_id)
         if flag["name"]:
             userNameTable.delete(username)
-        
-        return render_template("signup.html",id=flag["id"],name=flag["name"])
+
+        return render_template("signup.html", id=flag["id"], name=flag["name"])
+
 
 @app.route('/upload', methods=['GET'])
 def upload_form():
@@ -166,9 +172,8 @@ def upload():
         return redirect(FQDN+"/signup")
     else:
         return redirect(FQDN)
-    
+
     username = res["record"]["Item"]["username"]
-        
 
     # フォームが揃っている　and ログイン中　and ユーザデータが存在する　
     # ファイルの拡張子を確認
