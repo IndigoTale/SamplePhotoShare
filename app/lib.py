@@ -12,16 +12,6 @@ JST = timezone(timedelta(hours=+9), 'JST')
 # 投稿可能な画像の拡張子
 ALLOWED_EXTENSIONS = ('png', 'jpg', 'jpeg')
 
-# Flask App (Docker Container On EC2) からアクセスするのでセッションが必要
-with open("/app/aws_session_info.json", "r") as f:
-    aws_session_info = json.load(f)
-if aws_session_info is None:
-    exit(1)
-aws_session = boto3.Session(
-    aws_access_key_id=aws_session_info["ACCESS_KEY_ID"],
-    aws_secret_access_key=aws_session_info["SECRET_ACCESS_KEY"],
-    region_name=aws_session_info["REGION_NAME"]
-)
 # S3の情報
 BUCKET_NAME = 'photoshare-bucket'
 PHOTO_FOLDER = "images/photo/"
@@ -30,13 +20,16 @@ PROFILE_ICON_FOLDER = "images/profile-icon/"
 photoBucket = aws_session.resource('s3').Bucket(BUCKET_NAME)
 
 
-# DynamoDBのテーブル操作用クラス
-userIdTable = aws_session.resource('dynamodb').Table('userIdTable')
-userNameTable = aws_session.resource('dynamodb').Table('userNameTable')
-photoTable = aws_session.resource('dynamodb').Table('photoTable')
-infoTable = aws_session.resource('dynamodb').Table('infoTable')
 
 
+
+# 画像ファイルの拡張子を確認する関数
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+# ユーザを新規登録する関数
 def signUpCheck(username, email, password, repeat_password):
     # コード
     # 0 異常なし
@@ -75,34 +68,76 @@ def signUpCheck(username, email, password, repeat_password):
     sign_up_date = datetime.now(JST)
     userIdTable.put_item(
         Item={
-            "userId": email,
+            "user_id": email,
             "password": hashlib.sha256(password.encode()).hexdigest(),
-            "userName": username,
-            "signUpDate": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
-            "signUpYear": sign_up_date.strftime('%Y'),
-            "signUpMonth": sign_up_date.strftime('%m'),
-            "signUpDay": sign_up_date.strftime('%d'),
+            "username": username,
+            "created_at": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+            "updated_at": "undefined",
+            "profile_photo_path": PROFILE_ICON_FOLDER+"undefined.jpg",
+            "profile_text": ""
         }
     )
+
+    userNameTable.put_item(
+        Item={
+            "user_id": email,
+            "password": hashlib.sha256(password.encode()).hexdigest(),
+            "username": username,
+            "created_at": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+            "updated_at": "undefined",
+            "profile_photo_path": PROFILE_ICON_FOLDER+"undefined.jpg",
+            "profile_text": ""
+        }
+    )
+
+
+def putUserIdTable(user_id, username, password):
+    # デフォルト
+    item = {
+        "user_id": email,
+        "password": hashlib.sha256(password.encode()).hexdigest(),
+        "username": username,
+        "created_at": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+        "updated_at": "undefined",
+        "profile_photo_path": PROFILE_ICON_FOLDER+"undefined.jpg",
+        "profile_text": ""
+    }
+    # オプション
+    if kwargs.keys():
+        for key in kwargs.keys():
+            if key in item.keys():
+                item[key] = kwargs[key]
+    # テーブルへの追加
     try:
-        userNameTable.put_item(
-            Item={
-                "userId": email,
-                "password": hashlib.sha256(password.encode()).hexdigest(),
-                "userName": username,
-                "signUpDate": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
-                "signUpYear": sign_up_date.strftime('%Y'),
-                "signUpMonth": sign_up_date.strftime('%m'),
-                "signUpDay": sign_up_date.strftime('%d'),
-            }
-        )
-    except Exception as e:
-        print(e)
+        userIdTable.put_item(Item=item)
+    except ClientError as e:
+        print(e.response['Error']['Message'])
     else:
         pass
-    return True, 0
+def putUserNameTable(user_id, username, password,**kwargs):
+    item = {
+        "user_id": email,
+        "password": hashlib.sha256(password.encode()).hexdigest(),
+        "username": username,
+        "created_at": sign_up_date.strftime('%Y-%m-%d %H:%M:%S'),
+        "updated_at": "undefined",
+        "profile_photo_path": PROFILE_ICON_FOLDER+"undefined.jpg",
+        "profile_text": ""
+    }
+    # オプション
+    if kwargs.keys():
+        for key in kwargs.keys():
+            if key in item.keys():
+                item[key] = kwargs[key]
+    # テーブルへの追加
+    try:
+        userIdTable.put_item(Item=item)
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        pass      
 
-
+# Email と Password でログイン
 def login_by_email(email, password):
     # コード
     # 1 パスワードが間違っている．
@@ -127,6 +162,7 @@ def login_by_email(email, password):
         return False, 2
 
 
+# Username と Password でログイン
 def login_by_username(username, password):
     # コード
     # 1 パスワードが間違っている．
@@ -151,9 +187,7 @@ def login_by_username(username, password):
         return False, 2
 
 
-def queryUserIdTable(user_id):
-    # コード
-    # 1 ユーザが存在しない
+def getUserIdTable(user_id):
     try:
         res = userIdTable.get_item(
             Key={
@@ -165,36 +199,118 @@ def queryUserIdTable(user_id):
     else:
         pass
     if res.get('Item'):
-        return True, res.get('Item')['userId'], res.get('Item')['userName']
+        return res.get('Item')
     else:
-        return False, 1
+        return None
 
 
-def uploadPhoto(user_id, username):
-    photo_id = uuid.uuid4()
-
-    photoTable.put_item(
-        Item={
-            "photo_id": photo_id,
-            "user_id": user_id,
-            "username": username,
-            "heart": 0,
-            "comments": [],
-        }
-    )
 
 
-def upload_photo_to_s3(file, filename):
-
+def getPhotoTable(photo_id):
     try:
-        photoBucket.upload_fileobj(file,PHOTO_FOLDER+filename,ExtraArgs={"ContentType":f"image/{filename.split('.')[1]}",'ACL':'public-read'})
-    except boto3.exceptions.S3UploadFailedError:
+        res = photoTable.get_item(
+            Key={
+                'photoId': photo_id
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        pass
+    if res.get('Item'):
+        return res.get('Item')
+    else:
+        return None
+
+
+
+
+
+def putPhotoTimeSeriesTable(photo_id, **kwargs):
+    # デフォルト
+    item = {
+        "dummy": "dummy",  # ダミー/主キー
+        # 投稿日時/ソートキー
+        "ordered_at": datetime.now(JST).strftime('%Y-%m-%d %H:%M:%S'),
+        "photo_id": photo_id
+    }
+    # オプション
+    if kwargs.keys():
+        for key in kwargs.keys():
+            if key in item.keys():
+                item[key] = kwargs[key]
+    # テーブルへの追加
+    try:
+        photoTimeSeriesTable.put_item(Item=item)
+    except ClientError as e:
+        print(e.response['Error']['Message'])
         return False
     else:
         return True
 
 
-def upload_photo_info_to_dynamodb(filename, title, comment, user_id, username):
+def getCommentTable(comment_id):
+    try:
+        res = commentTable.get_item(
+            Key={
+                'commentId': comment_id
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        pass
+    if res.get('Item'):
+        return res.get('Item')
+    else:
+        return None
+
+
+
+
+
+# S3に写真を保存する
+
+
+def upload_photo_to_s3(file, filename):
+
+    try:
+        photoBucket.upload_fileobj(file, PHOTO_FOLDER+filename, ExtraArgs={
+                                   "ContentType": f"image/{filename.split('.')[1]}", 'ACL': 'public-read'})
+    except boto3.exceptions.S3UploadFailedError:
+        return {"status":400}
+    else:
+        return {"status":201}
+
+
+# DynamoDBに写真に関するレコードを保存する
+
+
+def upload_photo_info_to_dynamodb(photo_id, filename, title, self_comment, user_id, username):
+    # 写真の新規投稿を追加する．
+    putPhotoTable(photo_id,)
+    # ユーザ自身の投稿時系列データを更新
+    try:
+        userPhotoTimeSeriesTable.update_item(
+            Key={
+                "userId": "photoTable"
+            },
+            UpdateExpression="set photoNumber = :p",
+            ExpressionAttributeValues={
+                ":p": ""
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+        return False
+    else:
+        pass
+
+    return True
+
+
+def get_photos_from_dynamodb(page=1, **kwargs):
+    # 写真投稿IDを取得
     try:
         res = infoTable.get_item(
             Key={
@@ -210,58 +326,19 @@ def upload_photo_info_to_dynamodb(filename, title, comment, user_id, username):
         photo_number = str(int(res.get('Item').get('photoNumber')) + 1)
     else:
         return False
-    try:
-        infoTable.update_item(
-            Key={
-                "tableName": "photoTable"
-            },
-            UpdateExpression="set photoNumber = :p",
-            ExpressionAttributeValues={
-                ":p": photo_number
-            }
-        )
-    except ClientError as e:
-        print(e.response['Error']['Message'])
-        return False
-    else:
-        pass
-    try:
-        upload_date = datetime.now(JST)
-        photoTable.put_item(
-            Item={
-                "photoNumber": photo_number,
-                "userId": user_id,
-                "userName": username,
-                "title":title,
-                "self-comment":comment,
-                "uploadDate": upload_date.strftime('%Y-%m-%d %H:%M:%S'),
-                "uploadYear": upload_date.strftime('%Y'),
-                "uploadMonth": upload_date.strftime('%m'),
-                "uploadDay": upload_date.strftime('%d'),
-            }
-        )
-    except ClientError as e:
-        print(e.response['Error']['Message'])
-        return False
-    else:
-        pass
-
-    return True
-
-
-def updatePhoto(photo_id, user_id):
-    try:
-        res = photoTable.get_item(
-            Key={
-                'photo_id': photo_id
-            }
-        )
-    except ClientError as e:
-        print(e.response['Error']['Message'])
-    else:
-        pass
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    # 写真投稿IDに基づいて，最新の
+    photos = []
+    while photo_number < 1:
+        try:
+            res = photoTable.get_item(
+                Key={
+                    "photoNumber": photo_number
+                }
+            )
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+            return False
+        else:
+            pass
+        if res.get('Item'):
+            photos

@@ -15,9 +15,9 @@
         <img class="mb-4" src="static/img/icon-userMenu.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Welcome to Photo Share</h1>
         <div style="color:red">
-                {% if code == 1 %}
-                <p>パスワードが間違っています．</p>
-                {% elif code == 2 %}
+                {% if status == 400 %}
+                <p> ユーザIDかパスワードが間違っています．</p>
+                {% elif status == 404 %}
                 <p>ユーザが存在しません．</p>
                 {% endif %}
             </div>

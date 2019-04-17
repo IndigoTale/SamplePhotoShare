@@ -16,13 +16,15 @@
         <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
         <p>アカウントを新規作成します．</p>
         <div style="color:red">
-            {% if code == 1 %}
-            <p>再入力パスワードが間違っています．</p>
-            {% elif code == 2 %}
+            {% if form == False %}
+            <p>フォームを埋めてください．</p>
+            {% elif password == False %}
+            <p>再入力パスワードと一致しません．</p>
+            {% elif id == False %}
             <p>そのメールアドレスはすでに使われています．</p>
-            {% elif code == 3 %}
+            {% elif name == False %}
             <p>そのユーザ名はすでに使われています．</p>
-            {% elif code == 4 %}
+            {% elif format == False %}
             <p>正しいフォーマットで入力してください．</p>
             {% endif %}
         </div>
