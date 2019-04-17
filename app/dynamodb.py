@@ -85,7 +85,7 @@ class userIdTable:
         elif res.get('status') == 404:
             created_at = get_cuurent_timestamp()
 
-            res_in = self.put(user_id,created_at,username,hashed_password(user_id,password,password))
+            res_in = self.put(user_id,created_at,username,hashed_password(user_id,password,created_at))
             if res_in.get('status') == 201:
                 return {"status":201}
             else:
@@ -104,6 +104,7 @@ class userIdTable:
         elif res.get('status') == 200:
             created_at = res["record"]["Item"]["created_at"]
             stored_password = res["record"]["Item"]["password"]
+
             if hashed_password(user_id,password,created_at) ==  stored_password:
                 return {"status":200}
             else:
