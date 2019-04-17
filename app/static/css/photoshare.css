@@ -246,6 +246,7 @@ article .title span {
     border: none;
     float: right;
     color: white;
+    margin: 0 0.2rem;
 }
 .caption .text p button img {
     height: 15px;
@@ -255,7 +256,7 @@ article .title span {
 }
 .caption .text p button:hover {
     background: black;
-    border: inset 2px darkgray;
+    border: solid 2px darkgray;
     transition: all 0.8s ease;
 }
 
