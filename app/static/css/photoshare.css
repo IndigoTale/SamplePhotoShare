@@ -234,6 +234,7 @@ article .title span {
 
 .caption .text p label:hover {
     background: black;
+    border: inset 2px darkgray;
     transition: all 0.8s ease;
 }
 
@@ -254,6 +255,7 @@ article .title span {
 }
 .caption .text p button:hover {
     background: black;
+    border: inset 2px darkgray;
     transition: all 0.8s ease;
 }
 
@@ -276,7 +278,7 @@ article .title span {
     height: 200px;
     background-position: center center;
     background-size: cover;
-    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
     display: inline-block;
 }
 .uploadForm {
