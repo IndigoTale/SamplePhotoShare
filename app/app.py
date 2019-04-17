@@ -27,7 +27,7 @@ def index():
         return render_template("index.html")
     res = userIdTable.get(session.get('user_id'))
     if res['status'] == 200:
-        return render_template('login-index.html', username=res.get("record").get('username'))
+        return render_template('login-index.html', username=res["record"]["Item"]['username'])
     else:
         return render_template("index.html")
 
@@ -136,7 +136,7 @@ def upload_form():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    # フォームが足りているか
+    # フォーム記入漏れがないか
     if request.form.get('upload-title') and request.form.get('upload-comment') and request.files.get('upload-file'):
         title = request.form.get('upload-title')
         self_comment = request.form.get('upload-comment')
@@ -144,25 +144,23 @@ def upload():
     else:
         return render_template("upload.html", form=False)
     # ログインしているか
-    if session.get('user_id') is not None:
-        user_id = session.get('user_id')
-        username = userNameTable.get(username).get(
-            "record").get("Item")["username"]
-        res = userIdTable.get(user_id)
-        # ユーザが存在する
-        if res['status'] == 200:
-            pass
-        # 存在しない
-        elif res['status'] == 404:
-            return redirect(FQDN+"/signup")
-        # エラー
-        else:
-            return redirect(FQDN)
-    # ログインしていない
-    else:
+    if session.get('user_id') is None:
         return redirect(FQDN+"/login")
+    user_id = session.get('user_id')
+    res = userIdTable.get(user_id)
+    # ユーザデータが存在する
+    if res['status'] == 200:
+        pass
+    # 存在しない
+    elif res['status'] == 404:
+        return redirect(FQDN+"/signup")
+    else:
+        return redirect(FQDN)
+    
+    username = res["record"]["Item"]["username"]
+        
 
-    # フォームが揃っている　and ログイン中　and ユーザが存在する　
+    # フォームが揃っている　and ログイン中　and ユーザデータが存在する　
     # ファイルの拡張子を確認
     if allowed_file(img_file.filename) is not True:
         return render_template('upload.html', file_extention=False)
