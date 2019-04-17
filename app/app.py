@@ -102,7 +102,7 @@ def signup():
         return render_template('signup.html', name=False)
     
     if flag["id"] and flag["name"]:
-        redirect(FQDN+"/login")
+        return redirect(FQDN+"/login")
     else:
         if flag["id"]:
             userIdTable.delete(user_id)

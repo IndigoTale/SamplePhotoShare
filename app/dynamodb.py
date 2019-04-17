@@ -318,6 +318,7 @@ class photoTimeSeriesTable:
             return {"status":400}
         else:
             return {"status":200}
+        
     def delete(self,created_at,photo_id):
         key = {"dummy":"dummy","photo_id":photo_id,"created_at":created_at}
         try:
