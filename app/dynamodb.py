@@ -102,8 +102,8 @@ class userIdTable:
             return {"status":400}
 
         elif res.get('status') == 200:
-            created_at = res.get("Item")["created_at"]
-            stored_password = res.get("Item")["password"]
+            created_at = res["Item"]["record"]["created_at"]
+            stored_password = res["Item"]["record"]["password"]
             if hashed_password(user_id,password,created_at) ==  stored_password:
                 return {"status":200}
             else:
