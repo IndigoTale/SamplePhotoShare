@@ -23,7 +23,7 @@ photoTimeSeriesTable = photoTimeSeriesTable()
 @app.route('/')
 @app.route('/index/')
 def index():
-    res = photoTimeSeriesTable.query(Key("dummy").eq("dummy") & Key("created_at").lte(get_cuurent_timestamp()),Limit=2, ScanIndexForward=False)
+    res = photoTimeSeriesTable.query(Key("dummy").eq("dummy") & Key("created_at").lte(get_cuurent_timestamp()),Limit=2)
     photos = []
     print(res["records"])
     if res["status"] == 200:
