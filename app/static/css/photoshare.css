@@ -234,7 +234,7 @@ article .title span {
 
 .caption .text p label:hover {
     background: black;
-    border: inset 2px darkgray;
+    border: solid 2px darkgray;
     transition: all 0.8s ease;
 }
 
