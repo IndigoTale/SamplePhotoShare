@@ -441,7 +441,7 @@ class photoTimeSeriesTable:
             else:
                 pass
         
-        if records.get("ItemsCondi"):
+        if records.get("Items"):
             return {"status":200,"records":records}
         else:
             return {"status":404,"records":records}    
