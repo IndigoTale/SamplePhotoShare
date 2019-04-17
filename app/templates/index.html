@@ -52,53 +52,23 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-
+            {% for photo in photos %}
             <div class="col-md-6">
                 <div class="column caption">
                     <br>
                     <span class="text">
                         <p>
-                            <label href="/indessx">AAAA</label>
+                            <label href="/indessx">{{photo['username']}}</label>
                             <button><img src="static/img/icon-comment.png">111</button>
                             <button><img src="static/img/icon-heart.png">111</button>
 
                         </p>
 
                     </span>
-                    <img src="http://gahag.net/img/201607/27s/gahag-0110156577-1.jpg" class="img-fluid">
+                    <img src="{{ 'https://s3.amazonaws.com/photoshare-bucket/images/photo/'+photo['filename'] }}" class="img-fluid">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="column caption">
-                    <br>
-                    <span class="text">
-                        <p>
-                            <label href="/indessx">AAAA</label>
-                            <button><img src="static/img/icon-comment.png">111</button>
-                            <button><img src="static/img/icon-heart.png">111</button>
-
-                        </p>
-
-                    </span>
-                    <img src="http://gahag.net/img/201607/27s/gahag-0110156577-1.jpg" class="img-fluid">
-                </div>
-
-            </div>
-            <div class="col-md-6">
-                <div class="column caption">
-                    <br>
-                    <span class="text">
-                        <p>
-                            <label href="/indessx">AAAA</label>
-                            <button><img src="static/img/icon-comment.png">111</button>
-                            <button><img src="static/img/icon-heart.png">111</button>
-
-                        </p>
-
-                    </span>
-                    <img src="http://gahag.net/img/201607/27s/gahag-0110156577-1.jpg" class="img-fluid">
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="copyright">
