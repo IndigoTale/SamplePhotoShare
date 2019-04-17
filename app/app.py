@@ -46,7 +46,7 @@ def loginForm():
 @app.route('/login', methods=["POST"])
 def login():
     if request.form.get("email") and request.form.get("password"):
-        user_id, password = request.form.get("user_id"),request.form.get("password")
+        user_id, password = request.form.get("email"),request.form.get("password")
     else:
         return render_template("login.html",form=False)
      
