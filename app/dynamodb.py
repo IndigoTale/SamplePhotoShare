@@ -32,7 +32,9 @@ class userIdTable:
             "user_id":user_id, # Hash Key
             "created_at": created_at,
             "username":username,
-            "password":hashed_password
+            "password":hashed_password,
+            "profile_icon":"undefined",
+            "profile_text":"undefined"
         }
         try:
             self.userIdTable.put_item(Item=item)
@@ -56,7 +58,7 @@ class userIdTable:
                 return {"status":200,"record":record}
             else:
                 return {"status":404}
-                
+
     def delete(self,user_id):
         key = {"user_id":user_id}
         try:
