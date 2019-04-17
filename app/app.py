@@ -23,13 +23,14 @@ photoTimeSeriesTable = photoTimeSeriesTable()
 @app.route('/')
 @app.route('/index/')
 def index():
+    photos = photoTimeSeriesTable.query((Key("dummy").eq("dummy") & Key("created_at").lte(get_cuurent_timestamp)),Limit=20)
     if session.get('user_id') is None:
-        return render_template("index.html")
+        return render_template("index.html",photos=photos)
     res = userIdTable.get(session.get('user_id'))
     if res['status'] == 200:
-        return render_template('login-index.html', username=res["record"]["Item"]['username'])
+        return render_template('login-index.html', username=res["record"]["Item"]['username'],photos=photos)
     else:
-        return render_template("index.html")
+        return render_template("index.html",photos=photos)
 
 
 
