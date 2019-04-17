@@ -109,7 +109,8 @@ def signup():
             userIdTable.delete(user_id)
         if flag["name"]:
             userNameTable.delete(username)
-        return render_template("signup.html",server=False)
+        
+        return render_template("signup.html",id=flag["id"],name=flag["name"])
 
 @app.route('/upload', methods=['GET'])
 def upload_form():
