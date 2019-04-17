@@ -221,6 +221,7 @@ article .title span {
     color: white;
     font-size: 100%;
     display: inline;
+    
 }
 
 .caption .text p label {
@@ -232,7 +233,7 @@ article .title span {
 }
 
 .caption .text p label:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: black;
     transition: all 0.8s ease;
 }
 
@@ -252,7 +253,7 @@ article .title span {
     margin-top: -2px;
 }
 .caption .text p button:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: block;
     transition: all 0.8s ease;
 }
 
