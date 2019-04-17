@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
@@ -8,9 +8,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
 </head>
 
 <body class="text-center">
+    <nav class="navbar sticky-top navbar-expand-md navbar-darks">
+        <a class="navbar-brand font-1" href="#">
+            Photo Share
+        </a>
+
+        <div class="btn-group userMenuButton">
+            <button type="button" class="btn btn-md  rounded-0" data-toggle="dropdown">
+                <img alt="userMenu" src="static/img/icon-userMenu.png">
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="/login">Log In</a>
+                <a class="dropdown-item" href="/signup">Sign Up</a>
+            </div>
+        </div>
+
+        <div class="btn-group siteMenuButton">
+            <button type="button" class="btn btn-md rounded-0" data-toggle="dropdown">
+                <img alt="siteMenu" src="static/img/icon-siteMenu.png">
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="/photo">Photo</a>
+                <a class="dropdown-item" href="/photographer">PhotoGrapher</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/aboutus">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+
     <form class="form-signin" method="POST" action="/signup">
         <img class="mb-4" src="static/img/icon-userMenu.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
