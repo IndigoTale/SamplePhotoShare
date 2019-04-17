@@ -45,17 +45,19 @@ def loginForm():
 
 @app.route('/login', methods=["POST"])
 def login():
-    if request.form.get("user_id") and request.form.get("password"):
-
-        res = userIdTable.login(request.form.get(
-            "user_id"), request.form.get("password"))
-        if res.get("status") == 200:
-            session['user_id'] = request.form.get("user_id")
-            return redirect(FQDN)
-        else:
-            return render_template('login.html', status=res.get("status"))
+    if request.form.get("email") and request.form.get("password"):
+        user_id, password = request.form.get("user_id"),request.form.get("password")
     else:
-        return render_template('login.html', status=400)
+        return render_template("login.html",form=False)
+     
+    res = userIdTable.login(user_id,password)
+    if res.get("status") == 404:
+        return render_template("login.html",user=False)
+    elif res.get("status") == 400:
+        return render_template("login.html",format=False)
+    else:
+        session['user_id'] = user_id
+        return redirect(FQDN)
 
 
 @app.route('/logout', methods=['GET'])

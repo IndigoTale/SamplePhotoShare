@@ -97,6 +97,7 @@ class userIdTable:
         res = self.get(user_id)
         if res.get('status') == 400:
             return {"status":400}
+
         elif res.get('status') == 200:
             created_at = res.get("Item")["created_at"]
             stored_password = res.get("Item")["password"]
