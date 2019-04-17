@@ -247,7 +247,8 @@ article .title span {
 .caption .text p button img {
     height: 15px;
     width: 15px;
-    
+    margin-right: 5px;
+    margin-top: -2px;
 }
 .caption .text p button:hover {
     background: rgba(0, 0, 0, 0.5);
