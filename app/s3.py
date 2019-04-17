@@ -34,8 +34,15 @@ def uploadPhoto(file,filename):
 
 def deletePhoto(filename):
     try:
-        photoBucket.delete(PHOTO_FOLDER+filename, ExtraArgs={
-                                   "ContentType": f"image/{filename.split('.')[1]}", 'ACL': 'public-read'})
+        photoBucket.delete_objects(
+            Delete={
+                "Objects":[
+                    {
+                        "Key":PHOTO_FOLDER+filename
+                    }
+                ]
+            }
+        )
     except boto3.exceptions.S3UploadFailedError:
         return {"status":400}
     else:
