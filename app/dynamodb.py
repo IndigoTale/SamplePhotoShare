@@ -105,7 +105,7 @@ class userIdTable:
                 return {"status":200}
             else:
                 return {"status":401}
-                
+
         elif res.get('status') == 404:
             return {"status":404}    
         else:
