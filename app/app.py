@@ -28,10 +28,9 @@ def index():
     print(res["records"])
     if res["status"] == 200:
         for item in res["records"]["Items"]:
-            res = photoTable.get(item["photo_id"])
-
-            if res["status"] == 200:
-                photos.append(res["record"]["Item"])
+            res_in = photoTable.get(item["photo_id"])
+            if res_in["status"] == 200:
+                photos.append(res_in["record"]["Item"])
     print(json.dumps(photos,indent=4))
 
     if session.get('user_id') is None:
