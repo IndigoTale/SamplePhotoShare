@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(20,20,20);
+    color: white;
+}
+.userMenuButton {
+    margin-left: auto;
+   
+}
+
+ .userMenuButton button{
+    background-color: rgba(255, 255, 255, 0.0);
+    color:white;
+}
+
+
+.userMenuButton button img {
+    height: 30px;
+    width: 30px;
+}
+.dropdown-menu p{
+    color:white;
+    padding: 0rem 1.5rem;
+    margin-bottom: 0px;
+}
+
+/* 
+.userMenuButton a{
+    font-size: calc(20px + 1.0vw);
+} */
+
+.siteMenuButton {
+    margin: 3px;
+}
+
+.siteMenuButton button{
+    background-color: rgba(255, 255, 255, 0.0)
+}
+
+.siteMenuButton button img {
+    height: 30px;
+    width: 30px;
+}
+
+
+/*
+.siteMenuButton a{
+    font-size: calc(20px + 1.0vw);
+} */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+
+}
+.dropdown-menu{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.dropdown-menu a{
+   color: white;
+}
+.dropdown-menu a:hover{
+    color: white;
+    background: rgba(100, 100, 100, 0.5);
+    transition: all 0.8s ease;
+ }
+
+
+.font-1 {
+    font-size: calc(30px + 1.0vm);
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.5)
+}
