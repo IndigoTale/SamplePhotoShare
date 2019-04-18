@@ -147,57 +147,13 @@ article .title span {
     width: 100%;
 }
 
-/*黒色フィルター ＋　キャプション*/
-
-.filter img {
-    width: 400px;
-    height: 300px;
+.photoInlineArea {
+    padding: 1em 0;
+    display: inline;
 }
-
-.filter a {
-    display: block;
-    position: relative;
-    width: 400px;
-    min-height: 300px;
-    display: flex;
-    justify-content: center;
-    justify-content: flex-start;
-    align-items: center;
-    align-items: flex-end;
+.photoFrame {
+    height:360px;
 }
-
-.filter .name {
-    color: #FFF;
-    position: absolute;
-    width: 400px;
-    min-height: 300px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 160%;
-}
-
-.filter a:before {
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    content: ' ';
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-.filter a:hover:before {
-    background-color: rgba(0, 0, 0, 0.0);
-}
-
-/*セピアフィルター　＋　キャプション*/
 
 .caption {
     position: relative;
