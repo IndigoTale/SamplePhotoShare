@@ -127,7 +127,6 @@ nav {
 .commentBox{
     height:auto;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -140,9 +139,9 @@ nav {
     overflow: auto;
     color: white;
     border: 1px solid gray;
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.5);
 }
-.commentBox textarea button{
+.commentBox button{
     margin-top:10px;
     border-radius: 5px 5px 5px 5px;
 }
