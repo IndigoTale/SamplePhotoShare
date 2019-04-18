@@ -94,9 +94,8 @@ class userIdTable:
             return {"status":400}
 
     def login(self,user_id,password):
-        print(user_id,password)
+  
         res = self.get(user_id)
-        print(res)
 
         if res.get('status') == 400:
             return {"status":400}
