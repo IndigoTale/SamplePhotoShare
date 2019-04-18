@@ -246,12 +246,12 @@ def  heart():
 def photo(photo_id):
     res = photoTable.get(photo_id)
     if res["status"] == 200:
-        filename = res["record"]["Item"]["filename"]
+        photo = res["record"]["Item"]
 
     if session.get("user_id") is None:
-        return render_template("photo.html",filename = filename)
+        return render_template("photo.html",photo=photo)
     else:
-        return render_template("photo-login.html",filename = filename)
+        return render_template("photo-login.html",photo=photo)
 
 
 if __name__ == '__main__':
