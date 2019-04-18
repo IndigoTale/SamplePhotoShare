@@ -171,22 +171,13 @@ article .title span {
 
     .photoFrame {
         height: 200px;
-        width: unset;
+        width: fit-content;
     }
     .photoFrame img{
         height:100%;
     }
 }
-@media screen and (max-width:768px){
 
-    .photoFrame {
-        height:auto;
-        width: 100%;
-    }
-    .photoFrame img{
-        height:auto;
-    }
-}
 .caption {
     position: relative;
     margin-top :5px; 
