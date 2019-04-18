@@ -196,7 +196,13 @@ article .title span {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.8);
     margin: 0px;
+    align-items: center;
 }
+.photoFrame span p {
+    margin-left: 1em;
+    margin-right: auto;
+}
+
 .photoFrame a{
     height: 80%;
     width: 100%;
