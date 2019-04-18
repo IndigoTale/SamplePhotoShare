@@ -11,7 +11,12 @@ function clickHeartButton(photo_id){
 
             if(res.push == true){
                 var photoFrame = document.getElementById(photo_id);
+                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].getElementsByTagName('img')[0].src = 'static/img/icon-heart-pink.png'
                 console.log(photoFrame);
+            }
+            else{
+                var photoFrame = document.getElementById(photo_id);
+                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].getElementsByTagName('img')[0].src = 'static/img/icon-heart.png'
             }
         }   
     }
