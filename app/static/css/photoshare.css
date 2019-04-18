@@ -1,36 +1,37 @@
 body {
-    background-color: rgb(20,20,20);
+    background-color: rgb(20, 20, 20);
     color: white;
 }
+
 a {
     color: white;
 }
-a:link{
-    color:white;
+
+a:link {
+    color: white;
 }
-a:hover{
+
+a:hover {
     color: gray;
     transition: all 0.8s ease;
-    
 }
 
 .userMenuButton {
     margin-left: auto;
-   
 }
 
- .userMenuButton button{
+.userMenuButton button {
     background-color: rgba(255, 255, 255, 0.0);
-    color:white;
+    color: white;
 }
-
 
 .userMenuButton button img {
     height: 30px;
     width: 30px;
 }
-.dropdown-menu p{
-    color:white;
+
+.dropdown-menu p {
+    color: white;
     padding: 0rem 1.5rem;
     margin-bottom: 0px;
 }
@@ -44,7 +45,7 @@ a:hover{
     margin: 3px;
 }
 
-.siteMenuButton button{
+.siteMenuButton button {
     background-color: rgba(255, 255, 255, 0.0)
 }
 
@@ -53,7 +54,6 @@ a:hover{
     width: 30px;
 }
 
-
 /*
 .siteMenuButton a{
     font-size: calc(20px + 1.0vw);
@@ -61,20 +61,21 @@ a:hover{
 
 .dropdown:hover .dropdown-menu {
     display: block;
-
 }
-.dropdown-menu{
+
+.dropdown-menu {
     background-color: rgba(0, 0, 0, 0.5);
 }
-.dropdown-menu a{
-   color: white;
+
+.dropdown-menu a {
+    color: white;
 }
-.dropdown-menu a:hover{
+
+.dropdown-menu a:hover {
     color: white;
     background: rgba(100, 100, 100, 0.5);
     transition: all 0.8s ease;
- }
-
+}
 
 .font-1 {
     font-size: calc(30px + 1.0vm);
@@ -154,42 +155,43 @@ article .title span {
     min-width: 100%;
     flex-direction: row;
     justify-content: center;
-
 }
-
 
 .photoFrame {
     position: relative;
-    height:auto;
+    height: auto;
     width: 100%;
-    padding: 5px; 
+    padding: 5px;
 }
-.photoFrame img{
-    height:auto;
+
+.photoFrame img {
+    height: auto;
 }
 
 .photoFrame span {
     position: absolute;
-    top:0;
-    left:0;
-    margin:5px;
-    width:calc(100% - 10px);
-    height:calc(100% - 10px);
+    top: 0;
+    left: 0;
+    margin: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
     /* 横並び　右端寄せ */
-    display:flex;
-    justify-content:flex-end;
+    display: flex;
+    justify-content: flex-end;
     /* 一番手前 */
     z-index: 10;
     /* デフォルトは透明 */
     opacity: 0;
 }
+
 /* 写真にカーソルを合わせると表示 */
+
 .photoFrame span:hover {
     opacity: 1;
-    transition:all 0.8s ease;
-
+    transition: all 0.8s ease;
 }
-.photoFrame span span{
+
+.photoFrame span span {
     width: 100%;
     height: 20%;
     top: 80%;
@@ -198,39 +200,43 @@ article .title span {
     margin: 0px;
     align-items: center;
 }
+
 .photoFrame span p {
     margin-left: 1em;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-.photoFrame a{
+.photoFrame a {
     height: 80%;
     width: 100%;
 }
 
-.photoFrame button{
+.photoFrame button {
     color: white;
-    background-color: rgba(0,0,0,0);
-    border-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
 }
-.photoFrame button img{
+
+.photoFrame button img {
     margin: 0px 5px;
     height: 100%;
 }
 
-@media screen and (min-width: 480px){
+@media screen and (min-width: 480px) {
     .photoFrame {
         height: 200px;
         width: fit-content;
     }
-    .photoFrame img{
-        height:100%;
+    .photoFrame img {
+        height: 100%;
     }
 }
 
 .caption {
     position: relative;
-    margin-top :5px; 
+    margin-top: 5px;
 }
 
 .caption .text {
@@ -250,16 +256,14 @@ article .title span {
     color: white;
     font-size: 100%;
     display: inline;
-
 }
 
 .caption .text p label {
     border-radius: 10px 10px 10px 10px;
-    padding:   0px 10px 0px  10px;
+    padding: 0px 10px 0px 10px;
     float: left;
     background: darkgray;
     border: solid 2px rgba(0, 0, 0, 0.0);
-    
 }
 
 .caption .text p label:hover {
@@ -267,8 +271,6 @@ article .title span {
     border: solid 2px darkgray;
     transition: all 0.8s ease;
 }
-
-
 
 .caption .text p button {
     border-radius: 10px 10px 10px 10px;
@@ -278,12 +280,14 @@ article .title span {
     color: white;
     margin: 0 0.2rem;
 }
+
 .caption .text p button img {
     height: 15px;
     width: 15px;
     margin-right: 5px;
     margin-top: -2px;
 }
+
 .caption .text p button:hover {
     background: black;
     border: solid 2px darkgray;
@@ -293,73 +297,79 @@ article .title span {
 .caption:hover .text {
     opacity: 1;
 }
+
 .copyright {
     margin-top: 1em;
     color: white;
     text-align: center;
     background-color: rgb(50, 50, 50);
-    width:100%;
-    padding-top:1em;
-    padding-bottom:1em;
-    
-}    
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
 .imagePreview {
     width: 100%;
-
     height: 200px;
     background-position: center center;
     background-size: cover;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
     display: inline-block;
 }
+
 .uploadForm {
     margin-top: 1em;
     margin-bottom: 1e;
-    color:white;
+    color: white;
 }
 
-
-.squareFrame{
+.squareFrame {
     border: 1px dotted #999;
     width: 100%;
     max-height: 400px;
 }
+
 .squareContent {
     display: block;
     width: 100%;
-    padding-bottom:100%;
+    padding-bottom: 100%;
 }
-.squareContent img{
+
+.squareContent img {
     margin-right: auto;
     margin-left: auto;
 }
+
 .previewFrame {
     position: relative;
     width: 100%;
     height: 300px;
     border: 1px dotted #999;
-    padding-left:auto;
-    padding-right:auto; 
-    
+    padding-left: auto;
+    padding-right: auto;
 }
-.previewFrame img{
+
+.previewFrame img {
     max-height: 298px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    -webkit-transform: translateY(-50%) translateX(-50%); 
+    -webkit-transform: translateY(-50%) translateX(-50%);
 }
-.titleForm label{
+
+.titleForm label {
     border-radius: 5px 0px 0px 5px;
 }
-.titleForm span{
+
+.titleForm span {
     padding-left: 1em;
 }
 
-.descriptionForm label{
+.descriptionForm label {
     border-radius: 5px 0px 0px 5px;
 }
-.descriptionForm span{
+
+.descriptionForm span {
     padding-left: 1em;
 }
