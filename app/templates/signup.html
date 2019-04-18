@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/signup.css">
+    <link rel="stylesheet" href="static/css/photoshare.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/css/photoshare.css">
+
 
 </head>
 
@@ -43,40 +44,48 @@
         </div>
     </nav>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
 
-    <form class="form-signin" method="POST" action="/signup">
-        <img class="mb-4" src="static/img/icon-userMenu.png" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
-        <p>アカウントを新規作成します．</p>
-        <div style="color:red">
-            {% if form == False %}
-            <p>フォームを埋めてください．</p>
-            {% elif password == False %}
-            <p>再入力パスワードと一致しません．</p>
-            {% elif id == False %}
-            <p>そのメールアドレスはすでに使われています．</p>
-            {% elif name == False %}
-            <p>そのユーザ名はすでに使われています．</p>
-            {% elif format == False %}
-            <p>正しいフォーマットで入力してください．</p>
-            {% endif %}
+
+                <form class="form-signin" method="POST" action="/signup">
+                    <img class="mb-4" src="static/img/icon-userMenu.png" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+                    <p>アカウントを新規作成します．</p>
+                    <div style="color:red">
+                        {% if form == False %}
+                        <p>フォームを埋めてください．</p>
+                        {% elif password == False %}
+                        <p>再入力パスワードと一致しません．</p>
+                        {% elif id == False %}
+                        <p>そのメールアドレスはすでに使われています．</p>
+                        {% elif name == False %}
+                        <p>そのユーザ名はすでに使われています．</p>
+                        {% elif format == False %}
+                        <p>正しいフォーマットで入力してください．</p>
+                        {% endif %}
+                    </div>
+                    <label for="inputUsername" class="sr-only">Username</label>
+                    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username"
+                        required>
+
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required>
+
+                    <label for="inputPassword" class="sr-only">password</label>
+                    <input type="password" id="inputPassword" name="password" class="form-control"
+                        placeholder="Password" required>
+                    <label for="inputRepeatPassword" class="sr-only">Repeat password</label>
+                    <input type="password" id="inputRepeatPassword" name="repeat-password" class="form-control"
+                        placeholder="Repeat password" required>
+
+                    <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
+                    <p class="mt-5 mb-3 text-muted">&copy; 2019 Photo Share. All Rights Reserved.</p>
+                </form>
+            </div>
         </div>
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required>
-
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required>
-
-        <label for="inputPassword" class="sr-only">password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-        <label for="inputRepeatPassword" class="sr-only">Repeat password</label>
-        <input type="password" id="inputRepeatPassword" name="repeat-password" class="form-control"
-            placeholder="Repeat password" required>
-
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2019 Photo Share. All Rights Reserved.</p>
-    </form>
-
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
