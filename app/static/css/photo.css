@@ -102,6 +102,9 @@ nav {
     border-color: rgba(0, 0, 0, 0);
     color:white;
 }
+.userSelfCommentBox span button img{
+    height: 30px;
+}
 .userSelfCommentBox span button.user{
     width: auto;
 }
