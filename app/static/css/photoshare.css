@@ -175,6 +175,7 @@ article .title span {
     margin:5px;
     width:calc(100% - 10px);
     height:calc(100% - 10px);
+    background-color: rgba(0, 0, 0, 0.8);
     /* 横並び　右端寄せ */
     display:flex;
     justify-content:flex-end;
@@ -185,13 +186,18 @@ article .title span {
 }
 /* 写真にカーソルを合わせると表示 */
 .photoFrame span:hover {
+ 
     opacity: 1;
     transition:all 0.8s ease;
+
 }
 .photoFrame button{
     margin-top: 80%;
     height: 20%; 
     color: white;
+}
+.photoFrame button img{
+    margin-left: 5px;
 }
 
 @media screen and (min-width: 480px){
