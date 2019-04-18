@@ -71,6 +71,7 @@ def login():
         return render_template("login.html", format=False)
     else:
         session['user_id'] = user_id
+        session['username'] = res.get("record").get("Item").get("username")
         return redirect(FQDN)
 
 
@@ -247,11 +248,10 @@ def photo(photo_id):
     res = photoTable.get(photo_id)
     if res["status"] == 200:
         photo = res["record"]["Item"]
-
     if session.get("user_id") is None:
         return render_template("photo.html",photo=photo)
     else:
-        return render_template("photo-login.html",photo=photo)
+        return render_template("photo-login.html",photo=photo,username=session.get("username"))
 
 
 if __name__ == '__main__':

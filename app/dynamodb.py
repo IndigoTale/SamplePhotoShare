@@ -105,7 +105,7 @@ class userIdTable:
             stored_password = res["record"]["Item"]["password"]
 
             if hashed_password(user_id,password,created_at) ==  stored_password:
-                return {"status":200}
+                return {"status":200,"record":res["record"]}
             else:
                 return {"status":401}
 
