@@ -183,6 +183,12 @@ article .title span {
     /* デフォルトは透明 */
     opacity: 0;
 }
+/* 写真にカーソルを合わせると表示 */
+.photoFrame span:hover {
+    opacity: 1;
+    transition:all 0.8s ease;
+
+}
 .photoFrame span span{
     width: 100%;
     height: 20%;
@@ -191,16 +197,14 @@ article .title span {
     background-color: rgba(0, 0, 0, 0.8);
     margin: 0px;
 }
-/* 写真にカーソルを合わせると表示 */
-.photoFrame span:hover {
-    opacity: 1;
-    transition:all 0.8s ease;
 
-}
 .photoFrame button{
     color: white;
     background-color: rgba(0,0,0,0);
     border-color: rgba(0,0,0,0);
+}
+.photoFrame button:focus{
+    outline: 0;
 }
 .photoFrame button img{
     margin: 0px 5px;
