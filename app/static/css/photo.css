@@ -81,7 +81,7 @@ nav {
     border: 1px double gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.commentScrollableBox {
+.commentBox {
     height:auto;
     width: 20%;
     overflow: auto;
