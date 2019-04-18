@@ -159,16 +159,31 @@ article .title span {
 
 
 .photoFrame {
+    position: relative;
     height:auto;
     width: 100%;
-    padding: 5px;
+    padding: 5px; 
 }
 .photoFrame img{
     height:auto;
 }
 
-@media screen and (min-width: 480px){
+.photoFrame span {
+    position: absolute;
+    top:calc(80% - 5px);
+    left:0;
+    margin:5px;
+    width:calc(100% - 10px);
+    height:calc(20% - 5px);
+    display:flex;
+    background-color: rgba(0, 0, 0, 0.5)
+}
 
+.photoFrame p{
+
+}
+
+@media screen and (min-width: 480px){
     .photoFrame {
         height: 200px;
         width: fit-content;
