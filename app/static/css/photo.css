@@ -99,10 +99,13 @@ nav {
 .userSelfCommentBox span p{
     width:auto; 
     padding: 0px;
-    margin:1em 0 auto 0;
+    margin: 0 auto 0 0.5em;
     min-height:min-content;
     border: none;
+    align-items: center;
 }
+
+
 .userSelfCommentBox span button{
     
     height: 40px;
@@ -114,7 +117,17 @@ nav {
     height: 30px;
     margin-right:5px; 
 }
-
+@media screen and (min-width: 480px) {
+    .userSelfCommentBox span p {
+        font-size: 0.8em;
+    }
+    .userSelfCommentBox span button {
+        font-size: 0.8em;
+    }
+    .userSelfCommentBox span button img{
+        height: 1.5rem;
+    }
+}
 
 .userSelfCommentBox p{
     width: 100%;
