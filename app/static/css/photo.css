@@ -96,7 +96,7 @@ nav {
     border-bottom: 0px solid rgba(0, 0, 0, 0); 
 }
 .userSelfCommentBox span button{
-    width: 100px;
+    
     height: 40px;
     background-color: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
@@ -105,9 +105,7 @@ nav {
 .userSelfCommentBox span button img{
     height: 30px;
 }
-.userSelfCommentBox span button.user{
-    width: auto;
-}
+
 
 .userSelfCommentBox p{
     width: 100%;
