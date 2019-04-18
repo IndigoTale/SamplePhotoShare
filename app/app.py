@@ -213,8 +213,10 @@ def upload():
         return render_template("upload.html", upload=False)
 
 @app.route('/heart', methods=['POST'])
+def  heart():
     if request.json:
-        return "OK
+        return "OK"
     return "Hage"
+    
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
