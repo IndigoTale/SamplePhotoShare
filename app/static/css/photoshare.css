@@ -184,17 +184,20 @@ article .title span {
     /* デフォルトは透明 */
     opacity: 0;
 }
+.photoFrame span span{
+    height: 20%;
+    margin-top: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 /* 写真にカーソルを合わせると表示 */
 .photoFrame span:hover {
- 
     opacity: 1;
     transition:all 0.8s ease;
 
 }
 .photoFrame button{
-    margin-top: 80%;
-    height: 20%; 
     color: white;
+    border-color: rgba(0,0,0,0);
 }
 .photoFrame button img{
     margin-left: 5px;

@@ -56,8 +56,10 @@
             <img src="{{ 'https://s3.amazonaws.com/photoshare-bucket/images/photo/'+photo['filename'] }}"
                 class="img-fluid">
             <span>
-                <button><img src="static/img/icon-heart.png">100</button>
-                <button><img src="static/img/icon-comment.png">100</button>
+                <span>
+                    <button><img src="static/img/icon-heart.png">100</button>
+                    <button><img src="static/img/icon-comment.png">100</button>
+                </span>
             </span>
         </div>
 
@@ -66,7 +68,7 @@
         {% endfor %}
 
     </div>
-    
+
     <div class="copyright">
         &copy; 2019 Photo Share. All Rights Reserved.
     </div>
