@@ -72,10 +72,23 @@ nav {
     background: rgba(0, 0, 0, 0.5)
 }
 
+
+
 .commentScrollableBox {
     height:auto;
-    width: 100%;
+    width: 80%;
     overflow: auto;
     border: 1px double gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.commentScrollableBox {
+    height:auto;
+    width: 20%;
+    overflow: auto;
+    border: 1px double gray;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.commentScrollableBox span{
+    
+}
+
