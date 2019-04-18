@@ -214,6 +214,9 @@ def upload():
             photoTimeSeriesTable.delete(created_at)
         return render_template("upload.html", upload=False)
 
+@app.route('/heart', methods=['POST'])
+    if request.json:
+        
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
