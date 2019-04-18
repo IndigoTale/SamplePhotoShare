@@ -154,25 +154,27 @@ article .title span {
     min-width: 100%;
     flex-direction: row;
 
-    @media screen and (min-width:768px){
-       flex-direction:column; 
-    }
+
 }
+
 
 .photoFrame {
     height:200px;
     padding: 5px;
-    @media screen and (min-width:768px){
-        height:auto;
-        width:auto;
-        flex-direction:column; 
-     }
-    
 }
 .photoFrame img{
     height:100%;
 }
 
+@media screen and (min-width:768px){
+    .photoInlineArea {
+        flex-direction:column;
+    }
+    .photoFrame {
+        height:auto;
+        width:auto;  
+    }
+}
 .caption {
     position: relative;
     margin-top :5px; 
