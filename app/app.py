@@ -47,9 +47,6 @@ def index():
         return render_template("index.html", photos=photos)
 
 
-@app.route('/add_user')
-def add_user():
-    return "Hello World!"
 
 
 @app.route('/login', methods=["GET"])
@@ -245,7 +242,15 @@ def  heart():
         return None, 400 # Server Down
 
 
-  
+@app.route('/photo/<photo_id>', methods=["GET"])
+def photo(photo_id):
+    res = photoTable.get(photo_id)
+    if res["status"] == 200:
+        filename = res["record"]["Item"]["filename"]
 
+    if session.get("user_id") is None:
+        return render_template("photo.html",filename = filename)
+    else:
+        return render_template("photo-login.html",filename = filename)
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True,threaded=True)
