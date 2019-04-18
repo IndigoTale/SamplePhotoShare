@@ -213,9 +213,34 @@ def upload():
 
 @app.route('/heart', methods=['POST'])
 def  heart():
-    if request.json:
-        return "OK"
-    return "Hage"
+    if session.get("user_id") is None:
+        return None, 403 # Forbidden
+    
+    if request.json.get("photo_id") is None:
+        return None,400 # Bad Request
+
+    user_id , photo_id = session["user_id"] , request.json["photo_id"]
+    res = photoTable.get(photo_id)
+    if res["status"] == 200:
+        hearts = res["record"]["hearts"]
+        # ハートを押す
+        if user_id not in hearts:
+            hearts.append(user_id)
+            photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
+            return {"push":True},200
+        # ハートを取り消し
+        else:
+            hearts.pop(hearts.index(user_id))
+            photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
+            return {"push":False},200
+            
+    elif res["status"] == 404:
+        return None, 404 # Not Found
+    else:
+        return None, 400 # Server Down
+
+
+  
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True,threaded=True)

@@ -295,6 +295,20 @@ class photoTable:
                 return {"status":200,"record":record}
             else:
                 return {"status":404} 
+    def update(self,photo_id,AttirbuteUpdates):
+        key = {"photo_id":photo_id}
+        try:
+            record = self.photoTable.update_item(
+                Key=key,
+                AttributeUpdates=AttirbuteUpdates,
+                ReturnValues = 'UPDATED_NEW'
+            )
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+            return {"status":400}
+        else:
+            return {"status":200,"record":record}
+            
 
     def delete(self,photo_id):
         key = {"photo_id":photo_id}
