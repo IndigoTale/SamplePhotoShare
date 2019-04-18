@@ -58,7 +58,7 @@
         {% for photo in photos %}
         {% set photo_id = photo['photo_id'] %}
 
-        <div class="photoFrame" id="{{photo['photo_id']}}">
+        <div class="photoFrame">
            
                 <img src="{{ 'https://s3.amazonaws.com/photoshare-bucket/images/photo/'+photo['filename'] }}"
                     class="img-fluid">
@@ -66,10 +66,10 @@
                 <a href='/photo/{{photo_id}}'></a>
                 <span>
                     {% if username in photo["hearts"] %}
-                    <button onclick="clickHeartButton('{{photo_id}}')"><img
+                    <button id="{{photo['photo_id']}}" onclick="clickHeartButton('{{photo_id}}')"><img
                             src="static/img/icon-heart-pink.png">{{ photo["hearts"]|length }}</button>
                     {% else %}
-                    <button onclick="clickHeartButton('{{photo_id}}')"><img
+                    <button id="{{photo['photo_id']}}" onclick="clickHeartButton('{{photo_id}}')"><img
                         src="static/img/icon-heart.png">{{ photo["hearts"]|length }}</button>
                     {% endif %}
                     <button><img src="static/img/icon-comment.png">{{ photo["comments"]|length}}</button>
