@@ -148,11 +148,13 @@ article .title span {
 }
 
 .photoInlineArea {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     min-width: 100%;
+    
 }
 .photoFrame {
-    height:360px;
+    height:240px;
 }
 .photoFrame img{
     height:100%;
