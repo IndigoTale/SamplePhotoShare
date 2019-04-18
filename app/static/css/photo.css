@@ -88,12 +88,22 @@ nav {
     height: auto;
 }
 .userSelfCommentBox span{
-    height:50px;
+    height:40px;
     width: 100%;
+    display: flex;
+    align-items: center; 
 }
 .userSelfCommentBox span button{
-    width: 10%;
+    width: 100px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    color:white;
 }
+.userSelfCommentBox span button.user{
+    width: auto;
+}
+
 .userSelfCommentBox p{
     width: 100%;
     min-height:100px; 
