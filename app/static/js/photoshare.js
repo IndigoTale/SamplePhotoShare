@@ -13,14 +13,14 @@ function clickHeartButton(photo_id){
                 var photoFrame = document.getElementById(photo_id);
                 var count = photoFrame.textContent;
                 count = parseInt(count) + 1;
-                photoFrame.innerHTML = '<img src="static/img/icon-heart-pink.png">'+String(count);
+                photoFrame.innerHTML = '<img src="https://photoshare.tk/static/img/icon-heart-pink.png">'+String(count);
                 console.log(photoFrame);
             }
             else{
                 var photoFrame = document.getElementById(photo_id);
                 var count = photoFrame.textContent;
                 count = parseInt(count) - 1;
-                photoFrame.innerHTML = '<img src="static/img/icon-heart.png">'+String(count);
+                photoFrame.innerHTML = '<img src="https://photoshare.tk/static/img/icon-heart.png">'+String(count);
             }
         }   
     }
