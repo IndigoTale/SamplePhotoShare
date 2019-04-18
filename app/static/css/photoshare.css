@@ -199,7 +199,7 @@ article .title span {
 }
 .photoFrame a{
     height: 80%;
-    widows: 100%;
+    width: 100%;
 }
 
 .photoFrame button{
