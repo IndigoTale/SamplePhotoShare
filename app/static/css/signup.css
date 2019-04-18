@@ -8,6 +8,18 @@ body {
     color: white;
 }
 
+a {
+    color: white;
+}
+a:link{
+    color:white;
+}
+a:hover{
+    color: gray;
+    transition: all 0.8s ease;
+    
+}
+
 .userMenuButton {
     margin-left: auto;
    
