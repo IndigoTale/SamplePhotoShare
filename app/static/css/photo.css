@@ -131,6 +131,14 @@ nav {
     border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.commentBox textarea{
+    height:100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
 .commentScrollableBox span{
     
 }
