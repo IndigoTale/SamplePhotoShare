@@ -226,6 +226,7 @@ def  heart():
     res = photoTable.get(photo_id)
     if res["status"] == 200:
         hearts = res["record"]["Item"]["hearts"]
+        print(hearts)
         # ハートを押す
         if user_id not in hearts:
             hearts.append(user_id)
