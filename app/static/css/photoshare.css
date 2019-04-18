@@ -168,7 +168,9 @@ article .title span {
 
 @media screen and (min-width:768px){
     .photoInlineArea {
+        flex-wrap: unset;
         flex-direction:column;
+
     }
     .photoFrame {
         height:auto;
