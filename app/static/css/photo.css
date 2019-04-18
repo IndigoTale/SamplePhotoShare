@@ -127,7 +127,6 @@ nav {
 .commentBox{
     height:auto;
     width: 100%;
-    overflow: auto;
     border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -136,6 +135,7 @@ nav {
     height:100%;
     width: 100%;
     overflow: auto;
+    color: white;
     background-color: rgba(0, 0, 0, 0.0);
 }
 
