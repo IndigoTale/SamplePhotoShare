@@ -213,11 +213,13 @@ def upload():
 
 @app.route('/heart', methods=['POST'])
 def  heart():
+    print("A"*20)
     if session.get("user_id") is None:
         return None, 403 # Forbidden 
+    print("B"*20)
     if request.json.get("photo_id") is None:
         return None,400 # Bad Request
-
+    print("C"*20)
     user_id , photo_id = session["user_id"] , request.json["photo_id"]
     res = photoTable.get(photo_id)
     if res["status"] == 200:
