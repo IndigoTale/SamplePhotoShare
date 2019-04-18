@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 from flask_login import LoginManager, login_user, login_required
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import json
 # MyModule
@@ -12,6 +13,7 @@ import uuid
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
+CORS(app)
 
 FQDN = "https://photoshare.tk"
 userIdTable = userIdTable()
