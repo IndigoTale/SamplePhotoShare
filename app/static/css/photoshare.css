@@ -188,6 +188,7 @@ article .title span {
     top: 80%;
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
+    margin: 0px;
 }
 /* 写真にカーソルを合わせると表示 */
 .photoFrame span:hover {
