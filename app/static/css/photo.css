@@ -127,16 +127,23 @@ nav {
 .commentBox{
     height:auto;
     width: 100%;
-    border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
 }
 
 .commentBox textarea{
     height:100%;
+    min-height: 100px;
     width: 100%;
     overflow: auto;
     color: white;
+    border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.0);
+}
+.commentBox textarea button{
+    margin-top:10px;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .commentScrollableBox span{
