@@ -201,7 +201,8 @@ article .title span {
     border-color: rgba(0,0,0,0);
 }
 .photoFrame button img{
-    margin-left: 5px;
+    margin: 0px 5px;
+    height: 100%;
 }
 
 @media screen and (min-width: 480px){
