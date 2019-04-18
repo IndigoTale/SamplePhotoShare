@@ -91,9 +91,13 @@ nav {
     height:50px;
     width: 100%;
 }
+.userSelfCommentBox span button{
+    width: 10%;
+}
 .userSelfCommentBox p{
     width: 100%;
     min-height:100px; 
+    margin-bottom: 0px;
 }
 
 .commentScrollableBox {
