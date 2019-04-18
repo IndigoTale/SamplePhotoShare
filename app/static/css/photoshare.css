@@ -154,7 +154,7 @@ article .title span {
     min-width: 100%;
     flex-direction: row;
 
-    @media screen creen and (min-width:768px){
+    @media screen and (min-width:768px){
        flex-direction:column; 
     }
 }
@@ -162,7 +162,7 @@ article .title span {
 .photoFrame {
     height:200px;
     padding: 5px;
-    @media screen creen and (min-width:768px){
+    @media screen and (min-width:768px){
         height:auto;
         width:auto;
         flex-direction:column; 
