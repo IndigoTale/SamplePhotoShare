@@ -152,11 +152,17 @@ article .title span {
     display: flex;
     flex-wrap: wrap;
     min-width: 100%;
-    
+    flex-direction: row;
+
+    @media screen creen and (min-width:768px){
+       flex-direction:column; 
+    }
 }
+
 .photoFrame {
     height:200px;
     padding: 5px;
+
     
 }
 .photoFrame img{
