@@ -21,7 +21,6 @@ photoTimeSeriesTable = photoTimeSeriesTable()
 
 
 @app.route('/')
-@app.route('/index')
 def index():
     res = photoTimeSeriesTable.photoTimeSeriesTable.query(
         KeyConditionExpression=Key("dummy").eq("dummy") & Key(
@@ -219,4 +218,4 @@ def  heart():
     return "Hage"
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80, debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True,threaded=True)
