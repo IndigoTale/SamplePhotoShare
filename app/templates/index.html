@@ -57,8 +57,8 @@
                 class="img-fluid">
             <span>
                 <span>
-                    <button><img src="static/img/icon-heart.png">100</button>
-                    <button><img src="static/img/icon-comment.png">100</button>
+                    <button><img src="static/img/icon-heart.png">{{ photo["hearts"]|length }}</button>
+                    <button><img src="static/img/icon-comment.png">{{ photo["comments"]|length}}</button>
                 </span>
             </span>
         </div>
