@@ -175,8 +175,11 @@ article .title span {
     margin:5px;
     width:calc(100% - 10px);
     height:calc(20% - 5px);
+    /* 横並び　右端寄せ */
     display:flex;
+    justify-content:flex-end;
     background-color: rgba(0, 0, 0, 0.5)
+
 }
 
 .photoFrame p{
