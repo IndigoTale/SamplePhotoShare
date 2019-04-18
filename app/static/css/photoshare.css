@@ -173,6 +173,9 @@ article .title span {
         height: 200px;
         width: auto;
     }
+    .photoFrame img {
+        height: auto;
+    }
 }
 .caption {
     position: relative;
