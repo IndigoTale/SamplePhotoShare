@@ -96,6 +96,8 @@ nav {
     align-items: center; 
     justify-content: space-between;
     border-radius: 10px 10px 0 0;
+    border: 2px solid white;
+    border-bottom: 2px solid gray;
     background-color:rgb(30,30,30);
 }
 .userSelfCommentBox span p{
@@ -103,12 +105,11 @@ nav {
     padding: 0px;
     margin: 0 auto 0 0.5em;
     min-height:min-content;
-    background-color:rgb(50,50,50); 
     border: none;
     align-items: center;
-    border: 2px solid white;
-    border-top: 0px;
-    border-radius: 0 0 10px 10px;
+    border: 0px;
+    border-radius: 0;
+    background-color:rgb(30,30,30); 
 }
 
 
@@ -141,6 +142,10 @@ nav {
     margin-bottom: 0px;
     border: 1px solid gray;
     padding: 0px 1em;
+    border: 2px solid white;
+    border-top: 0px;
+    border-radius: 0 0 10px 10px;
+    background-color:rgb(50,50,50); 
 }
 .commentScrollableBox {
     height:auto;
