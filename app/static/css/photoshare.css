@@ -170,20 +170,28 @@ article .title span {
 
 .photoFrame span {
     position: absolute;
-    top:calc(80% - 5px);
+    top:0;
     left:0;
     margin:5px;
     width:calc(100% - 10px);
-    height:calc(20% - 5px);
+    height:calc(100% - 10px);
     /* 横並び　右端寄せ */
     display:flex;
     justify-content:flex-end;
-    background-color: rgba(0, 0, 0, 0.5)
-
+    /* 一番手前 */
+    z-index: 10;
+    /* デフォルトは透明 */
+    opacity: 0;
 }
-
-.photoFrame p{
-
+/* 写真にカーソルを合わせると表示 */
+.photoFrame span:hover {
+    opacity: 1;
+    transition:all 0.8s ease;
+}
+.photoFrame button{
+    margin-top: 80%;
+    height: 20%; 
+    color: white;
 }
 
 @media screen and (min-width: 480px){
