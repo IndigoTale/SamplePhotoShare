@@ -31,13 +31,11 @@ def index():
     )
 
     photos = []
-    print(res["Items"])
     if res["ResponseMetadata"]["HTTPStatusCode"] == 200:
         for item in res["Items"]:
             res_in = photoTable.get(item["photo_id"])
             if res_in["status"] == 200:
                 photos.append(res_in["record"]["Item"])
-    print(json.dumps(photos, indent=4))
 
     if session.get('user_id') is None:
         return render_template("index.html", photos=photos)
@@ -216,7 +214,7 @@ def upload():
 
 @app.route('/heart', methods=['POST'])
     if request.json:
-        
-
+        return "OK
+    return "Hage"
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
