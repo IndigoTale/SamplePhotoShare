@@ -92,6 +92,7 @@ nav {
     width: 100%;
     display: flex;
     align-items: center; 
+    border: 1px solid gray;
 }
 .userSelfCommentBox span button{
     width: 100px;
@@ -108,20 +109,22 @@ nav {
     width: 100%;
     min-height:100px; 
     margin-bottom: 0px;
+    border: 1px solid gray;
+    padding: 0px 1em;
 }
 
 .commentScrollableBox {
     height:auto;
     width: 100%;
     overflow: auto;
-    border: 1px double gray;
+    border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
 .commentBox{
     height:auto;
     width: 100%;
     overflow: auto;
-    border: 1px double gray;
+    border: 1px solids gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
 .commentScrollableBox span{
