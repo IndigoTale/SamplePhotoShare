@@ -11,19 +11,17 @@ function clickHeartButton(photo_id){
 
             if(res.push == true){
                 var photoFrame = document.getElementById(photo_id);
-                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].getElementsByTagName('img')[0].src = 'static/img/icon-heart-pink.png'
-            var count = photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].textContent
+                
+                var count = photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].textContent
                 count = parseInt(count) + 1
-                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].textContent = String(count)    
-
+                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].innerHTML = '<img src="static/img/icon-heart-pink.png">'+String(count)
                 console.log(photoFrame);
             }
             else{
                 var photoFrame = document.getElementById(photo_id);
-                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].getElementsByTagName('img')[0].src = 'static/img/icon-heart.png'
                 var count = photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].textContent
                 count = parseInt(count) - 1
-                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].textContent = String(count)
+                photoFrame.getElementsByTagName('span')[1].getElementsByTagName('button')[0].innerHTML = '<img src="static/img/icon-heart.png">'+String(count)
             }
         }   
     }
