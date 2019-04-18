@@ -1,4 +1,4 @@
-function cliclHeartButton(photo_id){
+function clickHeartButton(photo_id){
     var request = new XMLHttpRequest();
     var url = "/heart";
     var data = '{"photo_id":"'+photo_id+'"}';
