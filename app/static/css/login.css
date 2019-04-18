@@ -1,0 +1,124 @@
+
+
+body {
+    height: 100%;
+    display: -ms-flexbox;
+    display: block;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+a {
+    color: white;
+}
+a:link{
+    color:white;
+}
+a:hover{
+    color: gray;
+    transition: all 0.8s ease;
+    
+}
+
+.userMenuButton {
+    margin-left: auto;
+   
+}
+
+ .userMenuButton button{
+    background-color: rgba(255, 255, 255, 0.0);
+    color:white;
+}
+
+
+.userMenuButton button img {
+    height: 30px;
+    width: 30px;
+}
+.dropdown-menu p{
+    color:white;
+    padding: 0rem 1.5rem;
+    margin-bottom: 0px;
+}
+
+/* 
+.userMenuButton a{
+    font-size: calc(20px + 1.0vw);
+} */
+
+.siteMenuButton {
+    margin: 3px;
+}
+
+.siteMenuButton button{
+    background-color: rgba(255, 255, 255, 0.0)
+}
+
+.siteMenuButton button img {
+    height: 30px;
+    width: 30px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+
+}
+.dropdown-menu{
+    background-color: rgba(50,50,50,0.5);
+}
+.dropdown-menu a{
+   color: white;
+}
+.dropdown-menu a:hover{
+    color: white;
+    background: rgba(100, 100, 100, 0.5);
+    transition: all 0.8s ease;
+ }
+
+
+.font-1 {
+    font-size: calc(30px + 1.0vm);
+}
+
+nav {
+    background: rgba(50, 50, 50, 0.5)
+} 
+
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+ 
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+}
