@@ -203,9 +203,6 @@ article .title span {
     background-color: rgba(0,0,0,0);
     border-color: rgba(0,0,0,0);
 }
-.photoFrame button:focus{
-    outline: 0;
-}
 .photoFrame button img{
     margin: 0px 5px;
     height: 100%;
