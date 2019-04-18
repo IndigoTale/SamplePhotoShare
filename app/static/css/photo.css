@@ -86,7 +86,6 @@ nav {
 
 .userSelfCommentBox {
     margin-top:5px;
-    background-color:rgba(0, 0, 0, 0.5);
     width:    100%;
     height: auto;
 }
@@ -96,16 +95,20 @@ nav {
     display: flex;
     align-items: center; 
     justify-content: space-between;
-    border: 1px solid gray;
-    border-bottom: 0px solid rgba(0, 0, 0, 0); 
+    border-radius: 10px 10px 0 0;
+    background-color:rgb(30,30,30);
 }
 .userSelfCommentBox span p{
     width:auto; 
     padding: 0px;
     margin: 0 auto 0 0.5em;
     min-height:min-content;
+    background-color:rgb(50,50,50); 
     border: none;
     align-items: center;
+    border: 2px solid white;
+    border-top: 0px;
+    border-radius: 0 0 10px 10px;
 }
 
 
