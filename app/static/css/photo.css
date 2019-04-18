@@ -96,6 +96,13 @@ nav {
     border: 1px solid gray;
     border-bottom: 0px solid rgba(0, 0, 0, 0); 
 }
+.userSelfCommentBox span p{
+    width:auto; 
+    padding: 0px;
+    margin:1em 0 auto 0;
+    min-height:min-content;
+    border: none;
+}
 .userSelfCommentBox span button{
     
     height: 40px;
@@ -116,7 +123,6 @@ nav {
     border: 1px solid gray;
     padding: 0px 1em;
 }
-
 .commentScrollableBox {
     height:auto;
     width: 100%;
