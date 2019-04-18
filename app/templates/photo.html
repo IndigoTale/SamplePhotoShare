@@ -52,9 +52,12 @@
                 <div class="userSelfCommentBox">
                     <span>
                         <div style="width: 50%;padding-left:1em;">Title</div>
-                        <button>A</button>
-                        <button>B</button>
-                        <button>C</button>
+                        <button>
+                            <img src="../static/img/unknown.png">
+                            {{ photo["username"] }}
+                        </button>
+                        <button><img src="static/img/icon-heart.png">{{ photo["hearts"]|length }}</button>
+                        <button><img src="static/img/icon-comment.png">{{ photo["comments"]|length}}</button>
                     </span>
                     <p>
                         Self Comment 0
@@ -63,10 +66,10 @@
 
             </div>
             <div class="col-md-4">
-                <div class="commentScrollableBox" style="height:70%; max-height:100%;">    
+                <div class="commentScrollableBox" style="height:70%; max-height:100%;">
                 </div>
-                <div class="commentBox" style="height:20%;max-height:100%;">    
-                    </div>
+                <div class="commentBox" style="height:20%;max-height:100%;">
+                </div>
             </div>
         </div>
     </div>
