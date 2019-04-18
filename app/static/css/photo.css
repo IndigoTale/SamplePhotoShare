@@ -92,6 +92,7 @@ nav {
     width: 100%;
     display: flex;
     align-items: center; 
+    justify-content: space-between;
     border: 1px solid gray;
     border-bottom: 0px solid rgba(0, 0, 0, 0); 
 }
@@ -104,6 +105,7 @@ nav {
 }
 .userSelfCommentBox span button img{
     height: 30px;
+    margin-right:5px; 
 }
 
 
