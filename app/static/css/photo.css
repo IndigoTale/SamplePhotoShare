@@ -1,6 +1,7 @@
 body {
     background-color: rgb(20,20,20);
     color: white;
+    background:repeating-linear-gradient(90deg, #505050 0, #505050 5px, #FFF 5px, #FFF 10px);
 }
 .navbar-brand {
     color: white;
