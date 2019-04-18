@@ -244,7 +244,7 @@ def  heart():
 
 @app.route('/photo',methods=["GET"])
 def photo_non_id():
-    return redirect(url_for('/'))
+    return redirect(FQDN)
 
 @app.route('/photo/<photo_id>', methods=["GET"])
 def photo(photo_id):
