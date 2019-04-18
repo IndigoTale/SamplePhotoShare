@@ -214,8 +214,7 @@ def upload():
 @app.route('/heart', methods=['POST'])
 def  heart():
     if session.get("user_id") is None:
-        return None, 403 # Forbidden
-    
+        return None, 403 # Forbidden 
     if request.json.get("photo_id") is None:
         return None,400 # Bad Request
 
@@ -233,7 +232,7 @@ def  heart():
             hearts.pop(hearts.index(user_id))
             photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
             return {"push":False},200
-            
+
     elif res["status"] == 404:
         return None, 404 # Not Found
     else:
