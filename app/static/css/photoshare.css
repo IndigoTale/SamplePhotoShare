@@ -164,7 +164,7 @@ article .title span {
     padding: 5px;
 }
 .photoFrame img{
-    height:100%;
+    height:auto;
 }
 
 @media screen and (min-width:768px){
@@ -173,8 +173,8 @@ article .title span {
         height: 200px;
         width: auto;
     }
-    .photoFrame img {
-        height: auto;
+    .photoFrame img{
+        height:100%;
     }
 }
 .caption {
