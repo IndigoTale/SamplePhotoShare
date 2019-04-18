@@ -175,7 +175,6 @@ article .title span {
     margin:5px;
     width:calc(100% - 10px);
     height:calc(100% - 10px);
-    background-color: rgba(0, 0, 0, 0.8);
     /* 横並び　右端寄せ */
     display:flex;
     justify-content:flex-end;
@@ -187,6 +186,7 @@ article .title span {
 .photoFrame span span{
     height: 20%;
     top: 80%;
+    opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
 }
 /* 写真にカーソルを合わせると表示 */
