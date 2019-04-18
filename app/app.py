@@ -231,12 +231,12 @@ def  heart():
         if user_id not in hearts:
             hearts.append(user_id)
             photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
-            return '{"push":True}',200
+            return json.dumps({"push":True}),200
         # ハートを取り消し
         else:
             hearts.pop(hearts.index(user_id))
             photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
-            return '{"push":False}',200
+            return json.dumps({"push":False}),200
 
     elif res["status"] == 404:
         return None, 404 # Not Found
