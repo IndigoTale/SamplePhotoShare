@@ -64,7 +64,7 @@ a:hover{
 
 }
 .dropdown-menu{
-    background-color: "FFF";
+    background-color: rgba(50,50,50,0.5);
 }
 .dropdown-menu a{
    color: white;
