@@ -1,6 +1,6 @@
 function clickHeartButton(photo_id){
     var request = new XMLHttpRequest();
-    var url = "/heart";
+    var url = "https://photoshare.tk/heart";
     var data = '{"photo_id":"'+photo_id+'"}';
     request.open('POST',url);
     request.setRequestHeader('content-type','application/json');
