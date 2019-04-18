@@ -148,9 +148,8 @@ article .title span {
 }
 
 .photoInlineArea {
-    width: 100%;
     display: inline-block;
-    
+    min-width: 100%;
 }
 .photoFrame {
     height:360px;
