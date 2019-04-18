@@ -65,8 +65,13 @@
             <span>
                 <a href='/photo/{{photo_id}}'></a>
                 <span>
+                    {% if username in photo["hearts"] %}
                     <button onclick="clickHeartButton('{{photo_id}}')"><img
-                            src="static/img/icon-heart.png">{{ photo["hearts"]|length }}</button>
+                            src="static/img/icon-heart-pink.png">{{ photo["hearts"]|length }}</button>
+                    {% else %}
+                    <button onclick="clickHeartButton('{{photo_id}}')"><img
+                        src="static/img/icon-heart.png">{{ photo["hearts"]|length }}</button>
+                    {% endif %}
                     <button><img src="static/img/icon-comment.png">{{ photo["comments"]|length}}</button>
                 </span>
             </span>

@@ -215,26 +215,27 @@ def upload():
 
 @app.route('/heart', methods=['POST'])
 def  heart():
-    print("A"*20)
+
     if session.get("user_id") is None:
         return None, 403 # Forbidden 
-    print("B"*20)
     if request.json.get("photo_id") is None:
         return None,400 # Bad Request
-    print("C"*20)
     user_id , photo_id = session["user_id"] , request.json["photo_id"]
+    
     res = photoTable.get(photo_id)
     if res["status"] == 200:
         hearts = res["record"]["Item"]["hearts"]
         print(hearts)
+        username = userIdTable.get(user_id).get("record").get("Item").get("username")
         # ハートを押す
-        if user_id not in hearts:
-            hearts.append(user_id)
+        if username not in hearts:
+            hearts.append(username)
+
             photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
             return json.dumps({"push":True}),200
         # ハートを取り消し
         else:
-            hearts.pop(hearts.index(user_id))
+            hearts.pop(hearts.index(username))
             photoTable.update(photo_id,{"hearts":{"Value":hearts,"Action":"PUT"}})
             return json.dumps({"push":False}),200
 
