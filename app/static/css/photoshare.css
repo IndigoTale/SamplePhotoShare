@@ -197,6 +197,10 @@ article .title span {
     background-color: rgba(0, 0, 0, 0.8);
     margin: 0px;
 }
+.photoFrame a{
+    height: 80%;
+    widows: 100%;
+}
 
 .photoFrame button{
     color: white;
