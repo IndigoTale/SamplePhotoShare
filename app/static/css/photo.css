@@ -93,6 +93,7 @@ nav {
     display: flex;
     align-items: center; 
     border: 1px solid gray;
+    border-bottom: 0px solid rgba(0, 0, 0, 0); 
 }
 .userSelfCommentBox span button{
     width: 100px;
@@ -124,7 +125,7 @@ nav {
     height:auto;
     width: 100%;
     overflow: auto;
-    border: 1px solids gray;
+    border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
 .commentScrollableBox span{
