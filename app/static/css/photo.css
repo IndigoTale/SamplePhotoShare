@@ -81,6 +81,21 @@ nav {
     padding-right: 5px;
 }
 
+.userSelfCommentBox {
+    margin-top:5px;
+    background-color:rgba(0, 0, 0, 0.5);
+    width:    100%;
+    height: auto;
+}
+.userSelfCommentBox span{
+    height:50px;
+    width: 100%;
+}
+.userSelfCommentBox p{
+    width: 100%;
+    min-height:100px; 
+}
+
 .commentScrollableBox {
     height:auto;
     width: 100%;
@@ -88,7 +103,7 @@ nav {
     border: 1px double gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.commentBox {
+.commentBox{
     height:auto;
     width: 100%;
     overflow: auto;
