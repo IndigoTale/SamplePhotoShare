@@ -148,6 +148,7 @@ article .title span {
 }
 
 .photoInlineArea {
+    padding: 10px 10px;
     display: flex;
     flex-wrap: wrap;
     min-width: 100%;
