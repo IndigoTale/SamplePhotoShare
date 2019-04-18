@@ -125,7 +125,7 @@ nav {
     height: 30px;
     margin-right:5px; 
 }
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
     .userSelfCommentBox span p {
         font-size: 0.8em;
     }
