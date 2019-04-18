@@ -242,6 +242,9 @@ def  heart():
     else:
         return None, 400 # Server Down
 
+@app.route('/photo',methods=["GET"])
+def photo_non_id():
+    return redirect(url_for('/'))
 
 @app.route('/photo/<photo_id>', methods=["GET"])
 def photo(photo_id):
@@ -252,7 +255,6 @@ def photo(photo_id):
         return render_template("photo.html",photo=photo)
     else:
         return render_template("photo-login.html",photo=photo,username=session.get("username"))
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True,threaded=True)
