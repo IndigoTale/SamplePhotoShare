@@ -65,6 +65,7 @@
             <span>
                 <a href='/photo/{{photo_id}}'></a>
                 <span>
+                    <p>{{photo["username"]}}</p>
                     {% if username in photo["hearts"] %}
                     <button id="{{photo['photo_id']}}" onclick="clickHeartButton('{{photo_id}}')"><img
                             src="static/img/icon-heart-pink.png">{{ photo["hearts"]|length }}</button>

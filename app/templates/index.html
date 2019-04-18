@@ -63,6 +63,7 @@
             <span>
                 <a href='/photo/{{photo_id}}'></a>
                 <span>
+                    <p>{{photo["username"]}}</p>
                     <button><img src="static/img/icon-heart.png">{{ photo["hearts"]|length }}</button>
                     <button><img src="static/img/icon-comment.png">{{ photo["comments"]|length}}</button>
                 </span>
