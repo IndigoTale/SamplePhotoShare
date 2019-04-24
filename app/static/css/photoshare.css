@@ -92,12 +92,7 @@ header {
     position: relative;
     margin-top: -80px;
 }
-@media screen and (min-width: 960px) {
-    .topBackgroundImage{
-        display: flex;
-        justify-content: center;
-    }
-}
+
 
 
 .topBackgroundImage p {
@@ -115,7 +110,12 @@ header {
 .topBackgroundImage img {
     text-align: center;
 }
-
+@media screen and (min-width: 960px) {
+    .topBackgroundImage {
+        display: flex;
+        justify-content: center;
+    }
+}
 article {
     background-color: rgba(255, 255, 255, 0.146);
     min-height: 200px;
