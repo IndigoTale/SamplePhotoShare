@@ -113,7 +113,7 @@ header {
 }
 @media screen and (min-width: 960px) {
     .topBackgroundImage {
-        display: flex;
+        display: grid;
         justify-content: center;
     }
 }
