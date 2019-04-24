@@ -58,7 +58,6 @@ a:hover {
 .siteMenuButton a{
     font-size: calc(20px + 1.0vw);
 } */
-
 .dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -95,6 +94,18 @@ header {
 }
 
 .topBackgroundImage p {
+    position: absolute;
+    /*絶対配置*/
+    color: white;
+    /*文字は白に*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.topBackgroundImage img {
     position: absolute;
     /*絶対配置*/
     color: white;
