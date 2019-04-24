@@ -92,6 +92,13 @@ header {
     position: relative;
     margin-top: -80px;
 }
+@media screen and (min-width: 960px) {
+    .topBackgroundImage{
+        display: flex;
+        justify-content: center;
+    }
+}
+
 
 .topBackgroundImage p {
     position: absolute;
