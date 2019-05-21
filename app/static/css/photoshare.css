@@ -110,6 +110,7 @@ header {
 }
 .topBackgroundImage img {
     text-align: center;
+    max-height: 800px;
 }
 @media screen and (min-width: 960px) {
     .topBackgroundImage {
